@@ -268,6 +268,7 @@
       transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
                   transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
       min-height: 0;
+      cursor: pointer;
     }
 
     .modal-overlay.active .modal-card {
@@ -293,7 +294,7 @@
       transition: background-color 0.2s, transform 0.2s, opacity 0.3s ease;
     }
 
-    /* Modo imersivo: esconde o X quando o usuário toca na imagem */
+    /* Modo imersivo: esconde o X quando o usuário clica em qualquer lugar do modal */
     .modal-card.immersive .modal-close-btn {
       opacity: 0;
       pointer-events: none;
@@ -336,7 +337,6 @@
       width: 100%;
       height: auto;
       display: block;
-      cursor: pointer;
     }
 
     .modal-description {
@@ -650,7 +650,7 @@
   </footer>
 
   <div id="modalOverlay" class="modal-overlay" onclick="closeModalOnOverlay(event)">
-    <div class="modal-card">
+    <div class="modal-card" onclick="toggleImmersive(event)">
       <button class="modal-close-btn" onclick="closeModal()">
         <div class="close-icon-container">
           <div class="close-line-1"></div>
@@ -658,7 +658,7 @@
         </div>
       </button>
       <div class="modal-scroll-content">
-        <img id="modalImg" src="" alt="Ampliação do Projeto" onclick="toggleImmersive(event)">
+        <img id="modalImg" src="" alt="Ampliação do Projeto">
         <div class="modal-description">
           <div id="modalTextContainer"></div>
         </div>
@@ -708,8 +708,11 @@
       }
     }
 
-    /* Alterna o modo imersivo: esconde/mostra o X ao clicar na imagem */
+    /* Alterna o modo imersivo: esconde/mostra o X ao clicar em qualquer lugar do modal */
     function toggleImmersive(event) {
+      /* Se o clique foi no próprio botão X, não faz nada (deixa o closeModal agir) */
+      if (event.target.closest('.modal-close-btn')) return;
+      
       event.stopPropagation();
       const card = document.querySelector('.modal-card');
       card.classList.toggle('immersive');
