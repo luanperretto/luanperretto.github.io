@@ -47,14 +47,12 @@
       top: 0;
       background-color: #fff;
       z-index: 10;
-      /* Estende o fundo branco para cobrir a área do padding do body */
       margin-left: -20px;
       margin-right: -20px;
       padding-left: 20px;
       padding-right: 20px;
     }
 
-    /* Botões - sem padding lateral para alinhar com as laterais da coluna */
     nav a, .back-to-top { 
       font-family: 'Oswald', sans-serif;
       font-weight: 300;
@@ -292,7 +290,13 @@
       cursor: pointer;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
       z-index: 10;
-      transition: background-color 0.2s, transform 0.2s;
+      transition: background-color 0.2s, transform 0.2s, opacity 0.3s ease;
+    }
+
+    /* Modo imersivo: esconde o X quando o usuário toca na imagem */
+    .modal-card.immersive .modal-close-btn {
+      opacity: 0;
+      pointer-events: none;
     }
 
     .close-icon-container {
@@ -332,6 +336,7 @@
       width: 100%;
       height: auto;
       display: block;
+      cursor: pointer;
     }
 
     .modal-description {
@@ -653,7 +658,7 @@
         </div>
       </button>
       <div class="modal-scroll-content">
-        <img id="modalImg" src="" alt="Ampliação do Projeto">
+        <img id="modalImg" src="" alt="Ampliação do Projeto" onclick="toggleImmersive(event)">
         <div class="modal-description">
           <div id="modalTextContainer"></div>
         </div>
@@ -673,6 +678,9 @@
         textContainer.appendChild(p);
       });
 
+      /* Garante que o modo imersivo comece desativado */
+      document.querySelector('.modal-card').classList.remove('immersive');
+
       document.getElementById('modalOverlay').classList.add('active');
       document.body.style.overflow = 'hidden';
 
@@ -689,12 +697,22 @@
       
       const modalScroll = document.querySelector('.modal-scroll-content');
       modalScroll.scrollTop = 0;
+
+      /* Reseta o modo imersivo ao fechar */
+      document.querySelector('.modal-card').classList.remove('immersive');
     }
 
     function closeModalOnOverlay(event) {
       if (event.target.id === 'modalOverlay') {
         closeModal();
       }
+    }
+
+    /* Alterna o modo imersivo: esconde/mostra o X ao clicar na imagem */
+    function toggleImmersive(event) {
+      event.stopPropagation();
+      const card = document.querySelector('.modal-card');
+      card.classList.toggle('immersive');
     }
 
     document.addEventListener('keydown', function(e) {
