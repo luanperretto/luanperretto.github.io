@@ -35,7 +35,7 @@
     
     #topo { scroll-margin-top: 10px; }
 
-    /* Menu superior - fundo branco se estende além da coluna */
+    /* Menu superior */
     nav { 
       display: flex;
       justify-content: space-between;
@@ -66,13 +66,8 @@
       transition: color 0.2s ease; 
     }
 
-    nav a:hover, .back-to-top:hover { 
-      color: #000; 
-    }
-
-    nav a:active, nav a:focus, .back-to-top:active, .back-to-top:focus {
-      color: #000;
-    }
+    nav a:hover, .back-to-top:hover { color: #000; }
+    nav a:active, nav a:focus, .back-to-top:active, .back-to-top:focus { color: #000; }
 
     nav a, .back-to-top, .social-links a {
       -webkit-tap-highlight-color: transparent;
@@ -113,6 +108,7 @@
       display: flex; 
       gap: 10px; 
       margin-bottom: 10px; 
+      flex-wrap: wrap;
     }
     .social-links a { 
       display: flex; 
@@ -227,6 +223,9 @@
       border-left: 1px solid #333;
     }
 
+    /* ============================================
+       MODAL DE PROJETO
+       ============================================ */
     .modal-overlay {
       display: flex;
       position: fixed;
@@ -294,7 +293,6 @@
       transition: background-color 0.2s, transform 0.2s, opacity 0.3s ease;
     }
 
-    /* Modo imersivo: esconde o X quando o usuário clica em qualquer lugar do modal */
     .modal-card.immersive .modal-close-btn {
       opacity: 0;
       pointer-events: none;
@@ -352,6 +350,158 @@
     .modal-description p { margin-bottom: 12px; }
     .modal-description p:last-child { margin-bottom: 0; }
 
+    /* ============================================
+       MODAL DO FORMULÁRIO DE E-MAIL
+       ============================================ */
+    .form-modal-overlay {
+      display: flex;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(50, 50, 50, 0.6);
+      z-index: 1001;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      backdrop-filter: blur(4px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                  visibility 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      overscroll-behavior: contain;
+    }
+
+    .form-modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .form-modal-card {
+      background-color: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      max-width: 520px;
+      width: 100%;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      transform: scale(0.92);
+      transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      min-height: 0;
+    }
+
+    .form-modal-overlay.active .form-modal-card {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .form-modal-scroll {
+      overflow-y: auto;
+      max-height: 90vh;
+      border-radius: 16px;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior: contain;
+      padding: 30px 28px;
+    }
+
+    .form-modal-scroll h2 {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 300;
+      font-size: 24px;
+      color: #111;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    .form-modal-scroll p.form-subtitle {
+      font-family: 'Work Sans', sans-serif;
+      font-weight: 300;
+      font-size: 15px;
+      color: #666;
+      margin-bottom: 18px;
+    }
+
+    .form-modal-scroll label {
+      display: block;
+      font-family: 'Work Sans', sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      color: #333;
+      margin-bottom: 6px;
+      margin-top: 14px;
+    }
+
+    .form-modal-scroll input,
+    .form-modal-scroll textarea {
+      width: 100%;
+      font-family: 'Work Sans', sans-serif;
+      font-weight: 300;
+      font-size: 16px;
+      color: #111;
+      padding: 12px 14px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: #fafafa;
+      outline: none;
+      transition: border-color 0.2s, background-color 0.2s;
+    }
+
+    .form-modal-scroll input:focus,
+    .form-modal-scroll textarea:focus {
+      border-color: #333;
+      background-color: #fff;
+    }
+
+    .form-modal-scroll textarea {
+      resize: vertical;
+      min-height: 110px;
+      line-height: 1.5;
+    }
+
+    .form-modal-scroll button[type="submit"] {
+      margin-top: 22px;
+      width: 100%;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 300;
+      font-size: 17px;
+      letter-spacing: 0.5px;
+      color: #fff;
+      background-color: #111;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 20px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .form-modal-scroll button[type="submit"]:hover {
+      background-color: #333;
+    }
+
+    .form-close-btn {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 36px;
+      height: 36px;
+      background: rgba(255, 255, 255, 0.9);
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      z-index: 10;
+      transition: background-color 0.2s, transform 0.2s;
+    }
+
     footer {
       margin-top: 40px;
       padding: 20px 0 30px 0;
@@ -373,24 +523,12 @@
         padding: 6px 0;
         font-size: 17px;
       }
-      nav a:first-child {
-        margin-right: 0;
-        margin-left: 0;
-      }
-      nav a:last-child {
-        margin-left: 0;
-        margin-right: 0;
-      }
-      #sobre, #projetos {
-        scroll-margin-top: 70px;
-      }
+      nav a:first-child { margin: 0; }
+      nav a:last-child { margin: 0; }
+      #sobre, #projetos { scroll-margin-top: 70px; }
 
-      nav a:active,
-      nav a:focus,
-      .back-to-top:active,
-      .back-to-top:focus {
-        color: #000;
-      }
+      nav a:active, nav a:focus,
+      .back-to-top:active, .back-to-top:focus { color: #000; }
 
       .modal-overlay {
         padding: 0;
@@ -438,11 +576,23 @@
         width: 100%;
         box-sizing: border-box;
       }
+      .modal-close-btn { top: 14px; right: 14px; }
 
-      .modal-close-btn {
-        top: 14px;
-        right: 14px;
+      .form-modal-overlay { padding: 0; align-items: stretch; }
+      .form-modal-card {
+        max-width: 100%;
+        width: 100%;
+        height: 100vh;
+        max-height: 100vh;
+        border-radius: 0;
+        margin: 0;
       }
+      .form-modal-scroll {
+        max-height: 100vh;
+        border-radius: 0;
+        padding: 26px 20px;
+      }
+      .form-close-btn { top: 14px; right: 14px; }
     }
   </style>
 </head>
@@ -459,6 +609,7 @@
   <h1>Luan Perretto</h1>
   <div class="subtitle">Editor de Geografia | Cartógrafo</div>
 
+  <!-- Redes Sociais (com WhatsApp e E-mail) -->
   <div class="social-links">
     <a href="https://www.linkedin.com/in/luanperretto/?skipRedirect=true" target="_blank" title="LinkedIn">
       <i class="fa-brands fa-linkedin-in"></i>
@@ -468,6 +619,14 @@
     </a>
     <a href="https://substack.com/@luanperretto" target="_blank" title="Substack">
       <i class="fa-solid fa-bookmark"></i>
+    </a>
+    <!-- WhatsApp -->
+    <a href="https://wa.me/5541995015111?text=Oi%20Luan!%20Tudo%20bem%3F%20Gostaria%20de%20falar%20contigo." target="_blank" title="WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+    <!-- E-mail (abre o formulário) -->
+    <a href="#" onclick="openFormModal(event)" title="Enviar mensagem">
+      <i class="fa-solid fa-envelope"></i>
     </a>
   </div>
 
@@ -649,6 +808,7 @@
     <a href="#topo" class="back-to-top">VOLTAR</a>
   </footer>
 
+  <!-- Modal de Projeto -->
   <div id="modalOverlay" class="modal-overlay" onclick="closeModalOnOverlay(event)">
     <div class="modal-card" onclick="toggleImmersive(event)">
       <button class="modal-close-btn" onclick="closeModal()">
@@ -666,7 +826,44 @@
     </div>
   </div>
 
+  <!-- Modal do Formulário de E-mail -->
+  <div id="formModalOverlay" class="form-modal-overlay" onclick="closeFormModalOnOverlay(event)">
+    <div class="form-modal-card">
+      <button class="form-close-btn" onclick="closeFormModal()">
+        <div class="close-icon-container">
+          <div class="close-line-1"></div>
+          <div class="close-line-2"></div>
+        </div>
+      </button>
+      <div class="form-modal-scroll">
+        <h2>Enviar mensagem</h2>
+        <p class="form-subtitle">Preencha os campos e a mensagem chegará no meu e-mail.</p>
+
+        <form action="https://formsubmit.co/luan.perretto@gmail.com" method="POST">
+          <!-- Configurações extras do FormSubmit -->
+          <input type="hidden" name="_subject" value="Nova mensagem pelo site">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+
+          <label for="nome">Nome completo</label>
+          <input type="text" id="nome" name="Nome" placeholder="Seu nome" required>
+
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="Email" placeholder="seu@email.com" required>
+
+          <label for="mensagem">Mensagem</label>
+          <textarea id="mensagem" name="Mensagem" placeholder="Escreva sua mensagem..." required></textarea>
+
+          <button type="submit">Enviar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
   <script>
+    /* ============================================
+       MODAL DE PROJETO
+       ============================================ */
     function openModal(imageSrc, paragraphs) {
       document.getElementById('modalImg').src = imageSrc;
       
@@ -678,7 +875,6 @@
         textContainer.appendChild(p);
       });
 
-      /* Garante que o modo imersivo comece desativado */
       document.querySelector('.modal-card').classList.remove('immersive');
 
       document.getElementById('modalOverlay').classList.add('active');
@@ -686,9 +882,7 @@
 
       const modalScroll = document.querySelector('.modal-scroll-content');
       modalScroll.scrollTop = 0;
-      setTimeout(() => {
-        modalScroll.scrollTop = 0;
-      }, 10);
+      setTimeout(() => { modalScroll.scrollTop = 0; }, 10);
     }
 
     function closeModal() {
@@ -698,21 +892,15 @@
       const modalScroll = document.querySelector('.modal-scroll-content');
       modalScroll.scrollTop = 0;
 
-      /* Reseta o modo imersivo ao fechar */
       document.querySelector('.modal-card').classList.remove('immersive');
     }
 
     function closeModalOnOverlay(event) {
-      if (event.target.id === 'modalOverlay') {
-        closeModal();
-      }
+      if (event.target.id === 'modalOverlay') closeModal();
     }
 
-    /* Alterna o modo imersivo: esconde/mostra o X ao clicar em qualquer lugar do modal */
     function toggleImmersive(event) {
-      /* Se o clique foi no próprio botão X, não faz nada (deixa o closeModal agir) */
       if (event.target.closest('.modal-close-btn')) return;
-      
       event.stopPropagation();
       const card = document.querySelector('.modal-card');
       card.classList.toggle('immersive');
@@ -721,10 +909,31 @@
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
         closeModal();
+        closeFormModal();
       }
     });
 
-    /* PULL TO REFRESH NO CELULAR */
+    /* ============================================
+       MODAL DE FORMULÁRIO DE E-MAIL
+       ============================================ */
+    function openFormModal(event) {
+      if (event) event.preventDefault();
+      document.getElementById('formModalOverlay').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeFormModal() {
+      document.getElementById('formModalOverlay').classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    function closeFormModalOnOverlay(event) {
+      if (event.target.id === 'formModalOverlay') closeFormModal();
+    }
+
+    /* ============================================
+       PULL TO REFRESH NO CELULAR
+       ============================================ */
     (function() {
       let startY = 0;
       let isPulling = false;
@@ -757,16 +966,16 @@
         nav.style.transition = 'transform 0.3s ease';
         nav.style.transform = 'translateY(0)';
 
-        if (distance > threshold) {
-          location.reload();
-        }
+        if (distance > threshold) location.reload();
 
         isPulling = false;
         startY = 0;
       });
     })();
 
-    /* DESELECIONA BOTÕES AO ROLAR NO CELULAR */
+    /* ============================================
+       DESELECIONA BOTÕES AO ROLAR NO CELULAR
+       ============================================ */
     (function() {
       window.addEventListener('scroll', function() {
         if (!('ontouchstart' in window)) return;
@@ -784,9 +993,7 @@
         const activeEl = document.activeElement;
         if (activeEl && activeEl.tagName === 'A' && 
             (activeEl.closest('nav') || activeEl.classList.contains('back-to-top'))) {
-          if (!activeEl.contains(e.target)) {
-            activeEl.blur();
-          }
+          if (!activeEl.contains(e.target)) activeEl.blur();
         }
       }, { passive: true });
     })();
