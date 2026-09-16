@@ -83,7 +83,8 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    #sobre, #projetos { scroll-margin-top: 75px; }
+    /* O scroll-margin-top faz o título da seção ficar escondido atrás do cabeçalho fixo */
+    #sobre, #projetos { scroll-margin-top: 20px; }
 
     h1 { 
       font-family: 'Oswald', sans-serif;
@@ -556,7 +557,9 @@
       }
       nav a:first-child { margin: 0; }
       nav a:last-child { margin: 0; }
-      #sobre, #projetos { scroll-margin-top: 70px; }
+
+      /* No celular, o scroll precisa ser mais curto para esconder o título atrás do cabeçalho */
+      #sobre, #projetos { scroll-margin-top: 15px; }
 
       .modal-overlay {
         padding: 0;
