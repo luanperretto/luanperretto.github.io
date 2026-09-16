@@ -104,28 +104,26 @@
       color: #111;
     }
 
+    /* Redes sociais - sem bolinha, ícones maiores, crescem no hover */
     .social-links { 
       display: flex; 
-      gap: 10px; 
-      margin-bottom: 10px; 
+      gap: 16px; 
+      margin-bottom: 12px; 
       flex-wrap: wrap;
+      align-items: center;
     }
     .social-links a { 
       display: flex; 
       align-items: center; 
       justify-content: center; 
-      width: 32px; 
-      height: 32px; 
-      background-color: #f4f5f7; 
-      border-radius: 50%; 
+      background-color: transparent; 
       color: #000; 
       text-decoration: none; 
-      font-size: 15px; 
-      transition: background-color 0.2s, transform 0.2s; 
+      font-size: 20px; 
+      transition: transform 0.2s ease; 
     }
     .social-links a:hover { 
-      background-color: #e2e8f0; 
-      transform: translateY(-2px); 
+      transform: scale(1.15); 
     }
 
     .email-text {
@@ -609,24 +607,22 @@
   <h1>Luan Perretto</h1>
   <div class="subtitle">Editor de Geografia | Cartógrafo</div>
 
-  <!-- Redes Sociais (com WhatsApp e E-mail) -->
+  <!-- Redes Sociais - nova ordem: LinkedIn, Substack, WhatsApp, E-mail, GitHub -->
   <div class="social-links">
     <a href="https://www.linkedin.com/in/luanperretto/?skipRedirect=true" target="_blank" title="LinkedIn">
       <i class="fa-brands fa-linkedin-in"></i>
     </a>
-    <a href="https://github.com/luanperretto" target="_blank" title="GitHub">
-      <i class="fa-brands fa-github"></i>
-    </a>
     <a href="https://substack.com/@luanperretto" target="_blank" title="Substack">
       <i class="fa-solid fa-bookmark"></i>
     </a>
-    <!-- WhatsApp -->
     <a href="https://wa.me/5541995015111?text=Oi%20Luan!%20Tudo%20bem%3F%20Gostaria%20de%20falar%20contigo." target="_blank" title="WhatsApp">
       <i class="fa-brands fa-whatsapp"></i>
     </a>
-    <!-- E-mail (abre o formulário) -->
     <a href="#" onclick="openFormModal(event)" title="Enviar mensagem">
       <i class="fa-solid fa-envelope"></i>
+    </a>
+    <a href="https://github.com/luanperretto" target="_blank" title="GitHub">
+      <i class="fa-brands fa-github"></i>
     </a>
   </div>
 
@@ -808,7 +804,6 @@
     <a href="#topo" class="back-to-top">VOLTAR</a>
   </footer>
 
-  <!-- Modal de Projeto -->
   <div id="modalOverlay" class="modal-overlay" onclick="closeModalOnOverlay(event)">
     <div class="modal-card" onclick="toggleImmersive(event)">
       <button class="modal-close-btn" onclick="closeModal()">
@@ -826,7 +821,6 @@
     </div>
   </div>
 
-  <!-- Modal do Formulário de E-mail -->
   <div id="formModalOverlay" class="form-modal-overlay" onclick="closeFormModalOnOverlay(event)">
     <div class="form-modal-card">
       <button class="form-close-btn" onclick="closeFormModal()">
@@ -840,7 +834,6 @@
         <p class="form-subtitle">Preencha os campos e a mensagem chegará no meu e-mail.</p>
 
         <form action="https://formsubmit.co/luan.perretto@gmail.com" method="POST">
-          <!-- Configurações extras do FormSubmit -->
           <input type="hidden" name="_subject" value="Nova mensagem pelo site">
           <input type="hidden" name="_captcha" value="false">
           <input type="hidden" name="_template" value="table">
@@ -861,9 +854,6 @@
   </div>
 
   <script>
-    /* ============================================
-       MODAL DE PROJETO
-       ============================================ */
     function openModal(imageSrc, paragraphs) {
       document.getElementById('modalImg').src = imageSrc;
       
@@ -913,9 +903,6 @@
       }
     });
 
-    /* ============================================
-       MODAL DE FORMULÁRIO DE E-MAIL
-       ============================================ */
     function openFormModal(event) {
       if (event) event.preventDefault();
       document.getElementById('formModalOverlay').classList.add('active');
@@ -931,9 +918,7 @@
       if (event.target.id === 'formModalOverlay') closeFormModal();
     }
 
-    /* ============================================
-       PULL TO REFRESH NO CELULAR
-       ============================================ */
+    /* PULL TO REFRESH NO CELULAR */
     (function() {
       let startY = 0;
       let isPulling = false;
@@ -973,9 +958,7 @@
       });
     })();
 
-    /* ============================================
-       DESELECIONA BOTÕES AO ROLAR NO CELULAR
-       ============================================ */
+    /* DESELECIONA BOTÕES AO ROLAR NO CELULAR */
     (function() {
       window.addEventListener('scroll', function() {
         if (!('ontouchstart' in window)) return;
