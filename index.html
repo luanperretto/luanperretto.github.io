@@ -159,6 +159,13 @@
       display: block;
       object-fit: contain;
     }
+    /* Ajuste fino de proporção: WhatsApp e GitHub ligeiramente maiores */
+    .social-links a img[alt="WhatsApp"] {
+      transform: scale(1.12);
+    }
+    .social-links a img[alt="GitHub"] {
+      transform: scale(1.08);
+    }
     .social-links a:hover,
     .social-links a:active {
       transform: scale(1.08); 
@@ -259,7 +266,7 @@
       border-left: 1px solid #333;
     }
 
-    /* Grade assimétrica colada: 1 imagem grande em cima + 2 pequenas embaixo */
+    /* Grade assimétrica colada: 1 imagem grande em cima + 2 pequenas embaixo (landing) */
     .multi-grid-inner {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -304,6 +311,45 @@
     .multi-grid-inner .expand-arrow-bottom-left {
       width: 4px;
       height: 4px;
+    }
+
+    /* ============================================
+       GRADE DAS MÚLTIPLAS IMAGENS DENTRO DO MODAL
+       1 grande em cima + 2 pequenas embaixo, formato quadrado
+       ============================================ */
+    .modal-multi-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 2fr 1fr;
+      gap: 6px;
+      background-color: #fff;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .modal-multi-item {
+      overflow: hidden;
+      background-color: #f4f5f7;
+      position: relative;
+    }
+
+    .modal-multi-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .modal-multi-item:nth-child(1) {
+      grid-column: 1 / -1;
+    }
+
+    .modal-multi-item:nth-child(2),
+    .modal-multi-item:nth-child(3) {
+      grid-column: span 1;
     }
 
     /* ============================================
@@ -934,7 +980,7 @@
       setTimeout(() => { modalScroll.scrollTop = 0; }, 10);
     }
 
-    /* Abre modal com múltiplas imagens (sem texto) */
+    /* Abre modal com múltiplas imagens em grade (1 grande + 2 pequenas) */
     function openMultiModal(imagesArray) {
       const imgContainer = document.getElementById('modalImg');
       const textContainer = document.getElementById('modalTextContainer');
@@ -946,22 +992,19 @@
       if (!multiContainer) {
         multiContainer = document.createElement('div');
         multiContainer.id = 'modalMultiImgs';
+        multiContainer.className = 'modal-multi-grid';
         imgContainer.parentNode.insertBefore(multiContainer, imgContainer.nextSibling);
       }
       multiContainer.innerHTML = '';
       
       imagesArray.forEach(src => {
+        const wrap = document.createElement('div');
+        wrap.className = 'modal-multi-item';
         const img = document.createElement('img');
         img.src = src;
-        img.style.width = '100%';
-        img.style.height = 'auto';
-        img.style.display = 'block';
-        img.style.marginBottom = '20px';
-        multiContainer.appendChild(img);
+        wrap.appendChild(img);
+        multiContainer.appendChild(wrap);
       });
-      
-      const lastImg = multiContainer.lastChild;
-      if (lastImg) lastImg.style.marginBottom = '0';
 
       document.querySelector('.modal-card').classList.remove('immersive');
       document.getElementById('modalOverlay').classList.add('active');
