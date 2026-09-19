@@ -268,7 +268,8 @@
 
     /* ============================================
        BLOCO AGRUPADO (imagens 6, 7 e 8)
-       Imagem 6 quadrada em cima, 7 e 8 cobrindo a metade de baixo
+       Imagem 6 quadrada por trás, 7 e 8 cobrindo a metade de baixo
+       com linhas brancas finas separando
        ============================================ */
     .multi-grid-item {
       position: relative;
@@ -283,7 +284,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr 1fr;
-      gap: 0;
+      gap: 3px;
       border-radius: 10px;
       overflow: hidden;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
@@ -292,7 +293,7 @@
       aspect-ratio: 1 / 1;
     }
 
-    /* Imagem 6 — quadrada, ocupa todo o bloco por trás */
+    /* Imagem 6 — quadrada, ocupa o bloco inteiro por trás */
     .multi-grid-inner .work-image-wrapper:nth-child(1) {
       grid-column: 1 / -1;
       grid-row: 1 / span 2;
@@ -310,7 +311,7 @@
       display: block;
     }
 
-    /* Imagens 7 e 8 — metade de baixo, coladas nos cantos */
+    /* Imagens 7 e 8 — metade de baixo, sobre a imagem 6 */
     .multi-grid-inner .work-image-wrapper:nth-child(2),
     .multi-grid-inner .work-image-wrapper:nth-child(3) {
       grid-row: 2;
@@ -845,7 +846,7 @@
         </div>
       </div>
 
-      <!-- Bloco agrupado: imagens 6, 7 e 8 (bloco quadrado) -->
+      <!-- Bloco agrupado: imagens 6, 7 e 8 (bloco quadrado com linhas brancas) -->
       <div class="work-item multi-grid-item" onclick="openMultiModal(['imagem6.png', 'imagem7.png', 'imagem8.png'])">
         <div class="multi-grid-inner">
           <div class="work-image-wrapper">
