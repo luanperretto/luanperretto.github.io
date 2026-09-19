@@ -7,11 +7,29 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;600&family=Work+Sans:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <style>
+    /* Fonte Roca Two - Regular (arquivo local no repositório) */
+    @font-face {
+      font-family: 'Roca Two';
+      src: url('Roca-Two-Regular.ttf') format('truetype');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* Fonte Roca Two - Bold (arquivo local no repositório) */
+    @font-face {
+      font-family: 'Roca Two';
+      src: url('Roca-Two-Bold.ttf') format('truetype');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
     * { 
       box-sizing: border-box; 
       margin: 0; 
@@ -55,8 +73,8 @@
 
     /* Botões do cabeçalho e VOLTAR */
     nav a, .back-to-top { 
-      font-family: 'Oswald', sans-serif;
-      font-weight: 300;
+      font-family: 'Roca Two', sans-serif;
+      font-weight: 400;
       font-size: 18px;
       letter-spacing: 0.5px;
       text-decoration: none; 
@@ -89,9 +107,9 @@
     #sobre, #projetos { scroll-margin-top: 20px; }
 
     h1 { 
-      font-family: 'Oswald', sans-serif;
+      font-family: 'Roca Two', sans-serif;
+      font-weight: 700;
       font-size: 54px; 
-      font-weight: 600; 
       margin-bottom: 4px; 
       color: #111; 
       line-height: 1.1;
@@ -109,9 +127,9 @@
     section { margin-bottom: 40px; }
     
     .section-title { 
-      font-family: 'Oswald', sans-serif;
+      font-family: 'Roca Two', sans-serif;
+      font-weight: 400;
       font-size: 24px; 
-      font-weight: 300; 
       letter-spacing: 0.5px;
       margin-bottom: 25px; 
       color: #111;
@@ -132,8 +150,14 @@
       background-color: transparent; 
       color: #000; 
       text-decoration: none; 
-      font-size: 20px; 
+      width: 24px;
+      height: 24px;
       transition: transform 0.2s ease; 
+    }
+    .social-links a svg {
+      width: 100%;
+      height: 100%;
+      display: block;
     }
     .social-links a:hover,
     .social-links a:active {
@@ -145,20 +169,10 @@
       font-weight: 300;
       font-size: 16px;
       color: #222;
-      margin-bottom: 2px;
+      margin-bottom: 30px;
     }
     .email-text a { color: #222; text-decoration: none; }
     .email-text a:hover { text-decoration: underline; }
-
-    .phone-text {
-      font-family: 'Work Sans', sans-serif;
-      font-weight: 300;
-      font-size: 16px;
-      color: #222;
-      margin-bottom: 30px;
-    }
-    .phone-text a { color: #222; text-decoration: none; }
-    .phone-text a:hover { text-decoration: underline; }
 
     .bio { 
       font-family: 'Work Sans', sans-serif;
@@ -442,8 +456,8 @@
     }
 
     .form-modal-scroll h2 {
-      font-family: 'Oswald', sans-serif;
-      font-weight: 300;
+      font-family: 'Roca Two', sans-serif;
+      font-weight: 400;
       font-size: 24px;
       color: #111;
       margin-bottom: 8px;
@@ -498,8 +512,8 @@
     .form-modal-scroll button[type="submit"] {
       margin-top: 22px;
       width: 100%;
-      font-family: 'Oswald', sans-serif;
-      font-weight: 300;
+      font-family: 'Roca Two', sans-serif;
+      font-weight: 400;
       font-size: 17px;
       letter-spacing: 0.5px;
       color: #fff;
@@ -639,30 +653,38 @@
   <div id="topo"></div>
 
   <nav>
-    <a href="#topo">INÍCIO</a>
-    <a href="#sobre">SOBRE</a>
-    <a href="#projetos">PROJETOS</a>
+    <a href="#topo">Início</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#projetos">Projetos</a>
   </nav>
 
   <h1>Luan Perretto</h1>
-  <div class="subtitle">Editor de Geografia | Cartógrafo</div>
+  <div class="subtitle">Editor de Geografia | Cartógrafo | Infografista</div>
 
-  <!-- Redes Sociais -->
+  <!-- Redes Sociais - estilo unificado em outline preto -->
   <div class="social-links">
+    <!-- LinkedIn -->
     <a href="https://www.linkedin.com/in/luanperretto/?skipRedirect=true" target="_blank" title="LinkedIn">
-      <i class="fa-brands fa-linkedin-in"></i>
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2" y="2" width="20" height="20" rx="2" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M7.5 10v7M7.5 7v.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M11.5 17v-4a2.5 2.5 0 0 1 5 0v4M11.5 17v-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
     </a>
-    <a href="https://substack.com/@luanperretto" target="_blank" title="Substack">
-      <i class="fa-solid fa-bookmark"></i>
-    </a>
-    <a href="https://wa.me/5541995015111?text=Oi%20Luan!%20Tudo%20bem%3F%20Gostaria%20de%20falar%20contigo." target="_blank" title="WhatsApp">
-      <i class="fa-brands fa-whatsapp"></i>
-    </a>
+
+    <!-- E-mail (outline) -->
     <a href="#" onclick="openFormModal(event)" title="Enviar mensagem">
-      <i class="fa-solid fa-envelope"></i>
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/>
+        <path d="m3.5 6.5 8.5 6 8.5-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
     </a>
+
+    <!-- GitHub (outline) -->
     <a href="https://github.com/luanperretto" target="_blank" title="GitHub">
-      <i class="fa-brands fa-github"></i>
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M9 19c-4 1.2-4-2-6-2.5m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.3 4.3 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.6 11.6 0 0 0-6 0C6.8 3.4 5.8 3.7 5.8 3.7a4.3 4.3 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.4 10c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
     </a>
   </div>
 
@@ -670,19 +692,15 @@
     <a href="mailto:luan.perretto@gmail.com">luan.perretto@gmail.com</a>
   </div>
 
-  <div class="phone-text">
-    <a href="tel:+5541995015111">+55 41 99501-5111</a>
-  </div>
-
   <section id="sobre">
-    <h2 class="section-title">SOBRE</h2>
+    <h2 class="section-title">Sobre</h2>
     <div class="bio">
-      Editor de Geografia e cartógrafo explorando o Brasil e o mundo através de textos mapas e infográficos.
+      Colaboro com editoras, edtechs e sistemas de ensino no desenvolvimento de coleções e materiais educacionais de Geografia do Ensino Fundamental e Médio. Atuo na edição e autoria de conteúdos e textos, assim como na ilustração de mapas e infográficos. No momento estou livre para novos projetos e oportunidades, aguardo seu contato!
     </div>
   </section>
 
   <section id="projetos">
-    <h2 class="section-title">PROJETOS</h2>
+    <h2 class="section-title">Projetos</h2>
 
     <div class="gallery">
 
@@ -841,7 +859,7 @@
   </section>
 
   <footer>
-    <a href="#topo" class="back-to-top">VOLTAR</a>
+    <a href="#topo" class="back-to-top">Voltar</a>
   </footer>
 
   <div id="modalOverlay" class="modal-overlay" onclick="closeModalOnOverlay(event)">
