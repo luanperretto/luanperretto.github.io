@@ -135,7 +135,7 @@
       color: #111;
     }
 
-    /* Redes sociais - ícones soltos, maiores, crescem no hover/toque */
+    /* Redes sociais */
     .social-links { 
       display: flex; 
       gap: 16px; 
@@ -205,7 +205,7 @@
 
     .work-item:hover img { transform: scale(1.02); }
 
-    /* Bolinha de expandir - cresce no hover (desktop) e no toque (celular) */
+    /* Bolinha de expandir */
     .work-overlay-icon {
       position: absolute;
       top: 14px;
@@ -311,7 +311,6 @@
       transform: scale(1);
     }
 
-    /* Botão X - cresce no hover (desktop) e no toque (celular) */
     .modal-close-btn {
       position: absolute;
       top: 14px;
@@ -330,13 +329,8 @@
       transition: transform 0.2s ease, opacity 0.3s ease;
     }
 
-    .modal-close-btn:hover {
-      transform: scale(1.08);
-    }
-
-    .modal-close-btn:active {
-      transform: scale(1.08);
-    }
+    .modal-close-btn:hover { transform: scale(1.08); }
+    .modal-close-btn:active { transform: scale(1.08); }
 
     .modal-card.immersive .modal-close-btn {
       opacity: 0;
@@ -529,7 +523,6 @@
       background-color: #333;
     }
 
-    /* Botão X do formulário - cresce no hover e no toque */
     .form-close-btn {
       position: absolute;
       top: 14px;
@@ -548,13 +541,8 @@
       transition: transform 0.2s ease;
     }
 
-    .form-close-btn:hover {
-      transform: scale(1.08);
-    }
-
-    .form-close-btn:active {
-      transform: scale(1.08);
-    }
+    .form-close-btn:hover { transform: scale(1.08); }
+    .form-close-btn:active { transform: scale(1.08); }
 
     footer {
       margin-top: 40px;
@@ -661,9 +649,8 @@
   <h1>Luan Perretto</h1>
   <div class="subtitle">Editor de Geografia | Cartógrafo | Infografista</div>
 
-  <!-- Redes Sociais - estilo unificado em outline preto -->
+  <!-- Redes Sociais -->
   <div class="social-links">
-    <!-- LinkedIn -->
     <a href="https://www.linkedin.com/in/luanperretto/?skipRedirect=true" target="_blank" title="LinkedIn">
       <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="2" y="2" width="20" height="20" rx="2" stroke="currentColor" stroke-width="1.6"/>
@@ -672,7 +659,6 @@
       </svg>
     </a>
 
-    <!-- E-mail (outline) -->
     <a href="#" onclick="openFormModal(event)" title="Enviar mensagem">
       <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/>
@@ -680,7 +666,6 @@
       </svg>
     </a>
 
-    <!-- GitHub (outline) -->
     <a href="https://github.com/luanperretto" target="_blank" title="GitHub">
       <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M9 19c-4 1.2-4-2-6-2.5m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.3 4.3 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.6 11.6 0 0 0-6 0C6.8 3.4 5.8 3.7 5.8 3.7a4.3 4.3 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.4 10c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -795,7 +780,8 @@
         </div>
       </div>
 
-      <div class="work-item" onclick="openModal('imagem6.png', ['Descrição detalhada do projeto 6.'])">
+      <!-- Bloco agrupado: imagens 6, 7 e 8 (abrem o mesmo modal) -->
+      <div class="work-item" onclick="openMultiModal(['imagem6.png', 'imagem7.png', 'imagem8.png'])">
         <div class="work-image-wrapper">
           <img src="imagem6.png" alt="Trabalho 6">
           <div class="work-overlay-icon">
@@ -805,10 +791,7 @@
             </div>
           </div>
         </div>
-      </div>
-
-      <div class="work-item" onclick="openModal('imagem7.png', ['Descrição detalhada do projeto 7.'])">
-        <div class="work-image-wrapper">
+        <div class="work-image-wrapper" style="margin-top: 20px;">
           <img src="imagem7.png" alt="Trabalho 7">
           <div class="work-overlay-icon">
             <div class="expand-icon-container">
@@ -817,35 +800,8 @@
             </div>
           </div>
         </div>
-      </div>
-
-      <div class="work-item" onclick="openModal('imagem8.png', ['Descrição detalhada do projeto 8.'])">
-        <div class="work-image-wrapper">
+        <div class="work-image-wrapper" style="margin-top: 20px;">
           <img src="imagem8.png" alt="Trabalho 8">
-          <div class="work-overlay-icon">
-            <div class="expand-icon-container">
-              <div class="expand-arrow-top-right"></div>
-              <div class="expand-arrow-bottom-left"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="work-item" onclick="openModal('imagem9.gif', ['Animação infográfica.'])">
-        <div class="work-image-wrapper">
-          <img src="imagem9.gif" alt="Trabalho 9">
-          <div class="work-overlay-icon">
-            <div class="expand-icon-container">
-              <div class="expand-arrow-top-right"></div>
-              <div class="expand-arrow-bottom-left"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="work-item" onclick="openModal('imagem10.png', ['Descrição detalhada do projeto 10.'])">
-        <div class="work-image-wrapper">
-          <img src="imagem10.png" alt="Trabalho 10">
           <div class="work-overlay-icon">
             <div class="expand-icon-container">
               <div class="expand-arrow-top-right"></div>
@@ -913,6 +869,7 @@
 
   <script>
     function openModal(imageSrc, paragraphs) {
+      resetMultiModal();
       document.getElementById('modalImg').src = imageSrc;
       
       const textContainer = document.getElementById('modalTextContainer');
@@ -931,6 +888,55 @@
       const modalScroll = document.querySelector('.modal-scroll-content');
       modalScroll.scrollTop = 0;
       setTimeout(() => { modalScroll.scrollTop = 0; }, 10);
+    }
+
+    /* Abre modal com múltiplas imagens (sem texto) */
+    function openMultiModal(imagesArray) {
+      const imgContainer = document.getElementById('modalImg');
+      const textContainer = document.getElementById('modalTextContainer');
+      
+      /* Esconde a imagem única e o texto padrão */
+      imgContainer.style.display = 'none';
+      textContainer.innerHTML = '';
+      
+      /* Cria um container para as imagens múltiplas */
+      let multiContainer = document.getElementById('modalMultiImgs');
+      if (!multiContainer) {
+        multiContainer = document.createElement('div');
+        multiContainer.id = 'modalMultiImgs';
+        imgContainer.parentNode.insertBefore(multiContainer, imgContainer.nextSibling);
+      }
+      multiContainer.innerHTML = '';
+      
+      imagesArray.forEach(src => {
+        const img = document.createElement('img');
+        img.src = src;
+        img.style.width = '100%';
+        img.style.height = 'auto';
+        img.style.display = 'block';
+        img.style.marginBottom = '20px';
+        multiContainer.appendChild(img);
+      });
+      
+      /* Remove a margem da última imagem */
+      const lastImg = multiContainer.lastChild;
+      if (lastImg) lastImg.style.marginBottom = '0';
+
+      document.querySelector('.modal-card').classList.remove('immersive');
+      document.getElementById('modalOverlay').classList.add('active');
+      document.body.style.overflow = 'hidden';
+
+      const modalScroll = document.querySelector('.modal-scroll-content');
+      modalScroll.scrollTop = 0;
+      setTimeout(() => { modalScroll.scrollTop = 0; }, 10);
+    }
+
+    /* Restaura o modal padrão ao abrir uma imagem única */
+    function resetMultiModal() {
+      const imgContainer = document.getElementById('modalImg');
+      const multiContainer = document.getElementById('modalMultiImgs');
+      imgContainer.style.display = 'block';
+      if (multiContainer) multiContainer.innerHTML = '';
     }
 
     function closeModal() {
