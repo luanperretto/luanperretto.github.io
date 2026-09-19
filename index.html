@@ -268,8 +268,8 @@
 
     /* ============================================
        BLOCO AGRUPADO (imagens 6, 7 e 8)
-       Imagem 6 quadrada por trás, 7 e 8 cobrindo a metade de baixo
-       com linhas brancas finas separando
+       Bloco quadrado: imagem 6 preenche por trás (cortada),
+       7 e 8 ficam por cima na metade de baixo
        ============================================ */
     .multi-grid-item {
       position: relative;
@@ -293,31 +293,30 @@
       aspect-ratio: 1 / 1;
     }
 
-    /* Imagem 6 — quadrada, ocupa o bloco inteiro por trás */
+    /* Imagem 6 — preenche o quadrado inteiro por trás, cortando o excesso */
     .multi-grid-inner .work-image-wrapper:nth-child(1) {
       grid-column: 1 / -1;
       grid-row: 1 / span 2;
+      overflow: hidden;
       border-radius: 0;
       box-shadow: none;
-      overflow: hidden;
-      width: 100%;
-      height: 100%;
     }
 
     .multi-grid-inner .work-image-wrapper:nth-child(1) img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center;
       display: block;
     }
 
-    /* Imagens 7 e 8 — metade de baixo, sobre a imagem 6 */
+    /* Imagens 7 e 8 — metade de baixo, por cima */
     .multi-grid-inner .work-image-wrapper:nth-child(2),
     .multi-grid-inner .work-image-wrapper:nth-child(3) {
       grid-row: 2;
+      overflow: hidden;
       border-radius: 0;
       box-shadow: none;
-      overflow: hidden;
       position: relative;
       z-index: 2;
     }
@@ -327,6 +326,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center;
       display: block;
     }
 
@@ -846,7 +846,7 @@
         </div>
       </div>
 
-      <!-- Bloco agrupado: imagens 6, 7 e 8 (bloco quadrado com linhas brancas) -->
+      <!-- Bloco agrupado: imagens 6, 7 e 8 (bloco quadrado) -->
       <div class="work-item multi-grid-item" onclick="openMultiModal(['imagem6.png', 'imagem7.png', 'imagem8.png'])">
         <div class="multi-grid-inner">
           <div class="work-image-wrapper">
