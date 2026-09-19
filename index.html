@@ -212,7 +212,7 @@
 
     .work-item:hover img { transform: scale(1.02); }
 
-    /* Bolinha de expandir */
+    /* Bolinha de expandir padrão */
     .work-overlay-icon {
       position: absolute;
       top: 14px;
@@ -225,7 +225,7 @@
       align-items: center;
       justify-content: center;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-      z-index: 2;
+      z-index: 5;
       transition: transform 0.2s ease;
     }
 
@@ -266,90 +266,67 @@
       border-left: 1px solid #333;
     }
 
-    /* Grade assimétrica colada: 1 imagem grande em cima + 2 pequenas embaixo (landing) */
+    /* ============================================
+       BLOCO AGRUPADO (imagens 6, 7 e 8)
+       Imagem 6 quadrada em cima, 7 e 8 cobrindo a metade de baixo
+       ============================================ */
+    .multi-grid-item {
+      position: relative;
+    }
+
+    .multi-grid-item .work-overlay-icon {
+      top: 14px;
+      right: 14px;
+    }
+
     .multi-grid-inner {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      grid-template-rows: auto auto;
+      grid-template-rows: 1fr 1fr;
       gap: 0;
       border-radius: 10px;
       overflow: hidden;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      background-color: #fff;
+      position: relative;
+      aspect-ratio: 1 / 1;
     }
 
+    /* Imagem 6 — quadrada, ocupa todo o bloco por trás */
     .multi-grid-inner .work-image-wrapper:nth-child(1) {
       grid-column: 1 / -1;
+      grid-row: 1 / span 2;
       border-radius: 0;
       box-shadow: none;
-      border-bottom: 2px solid #fff;
-    }
-
-    .multi-grid-inner .work-image-wrapper:nth-child(2),
-    .multi-grid-inner .work-image-wrapper:nth-child(3) {
-      grid-column: span 1;
-      border-radius: 0;
-      box-shadow: none;
-    }
-
-    .multi-grid-inner .work-image-wrapper:nth-child(2) {
-      border-right: 2px solid #fff;
-    }
-
-    .multi-grid-inner .work-overlay-icon {
-      width: 28px;
-      height: 28px;
-      top: 8px;
-      right: 8px;
-    }
-
-    .multi-grid-inner .expand-icon-container {
-      width: 10px;
-      height: 10px;
-    }
-
-    .multi-grid-inner .expand-arrow-top-right,
-    .multi-grid-inner .expand-arrow-bottom-left {
-      width: 4px;
-      height: 4px;
-    }
-
-    /* ============================================
-       GRADE DAS MÚLTIPLAS IMAGENS DENTRO DO MODAL
-       1 grande em cima + 2 pequenas embaixo, formato quadrado
-       ============================================ */
-    .modal-multi-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 2fr 1fr;
-      gap: 6px;
-      background-color: #fff;
+      overflow: hidden;
       width: 100%;
-      aspect-ratio: 1 / 1;
-      padding: 0;
-      margin: 0;
-      overflow: hidden;
+      height: 100%;
     }
 
-    .modal-multi-item {
-      overflow: hidden;
-      background-color: #f4f5f7;
-      position: relative;
-    }
-
-    .modal-multi-item img {
+    .multi-grid-inner .work-image-wrapper:nth-child(1) img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
 
-    .modal-multi-item:nth-child(1) {
-      grid-column: 1 / -1;
+    /* Imagens 7 e 8 — metade de baixo, coladas nos cantos */
+    .multi-grid-inner .work-image-wrapper:nth-child(2),
+    .multi-grid-inner .work-image-wrapper:nth-child(3) {
+      grid-row: 2;
+      border-radius: 0;
+      box-shadow: none;
+      overflow: hidden;
+      position: relative;
+      z-index: 2;
     }
 
-    .modal-multi-item:nth-child(2),
-    .modal-multi-item:nth-child(3) {
-      grid-column: span 1;
+    .multi-grid-inner .work-image-wrapper:nth-child(2) img,
+    .multi-grid-inner .work-image-wrapper:nth-child(3) img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     /* ============================================
@@ -868,35 +845,24 @@
         </div>
       </div>
 
-      <!-- Bloco agrupado: imagens 6, 7 e 8 (grid colado) -->
-      <div class="work-item" onclick="openMultiModal(['imagem6.png', 'imagem7.png', 'imagem8.png'])">
+      <!-- Bloco agrupado: imagens 6, 7 e 8 (bloco quadrado) -->
+      <div class="work-item multi-grid-item" onclick="openMultiModal(['imagem6.png', 'imagem7.png', 'imagem8.png'])">
         <div class="multi-grid-inner">
           <div class="work-image-wrapper">
             <img src="imagem6.png" alt="Trabalho 6">
-            <div class="work-overlay-icon">
-              <div class="expand-icon-container">
-                <div class="expand-arrow-top-right"></div>
-                <div class="expand-arrow-bottom-left"></div>
-              </div>
-            </div>
           </div>
           <div class="work-image-wrapper">
             <img src="imagem7.png" alt="Trabalho 7">
-            <div class="work-overlay-icon">
-              <div class="expand-icon-container">
-                <div class="expand-arrow-top-right"></div>
-                <div class="expand-arrow-bottom-left"></div>
-              </div>
-            </div>
           </div>
           <div class="work-image-wrapper">
             <img src="imagem8.png" alt="Trabalho 8">
-            <div class="work-overlay-icon">
-              <div class="expand-icon-container">
-                <div class="expand-arrow-top-right"></div>
-                <div class="expand-arrow-bottom-left"></div>
-              </div>
-            </div>
+          </div>
+        </div>
+        <!-- Botão único de expansão no canto superior direito -->
+        <div class="work-overlay-icon">
+          <div class="expand-icon-container">
+            <div class="expand-arrow-top-right"></div>
+            <div class="expand-arrow-bottom-left"></div>
           </div>
         </div>
       </div>
@@ -980,7 +946,7 @@
       setTimeout(() => { modalScroll.scrollTop = 0; }, 10);
     }
 
-    /* Abre modal com múltiplas imagens em grade (1 grande + 2 pequenas) */
+    /* Abre modal com múltiplas imagens em sequência (empilhadas, sem texto) */
     function openMultiModal(imagesArray) {
       const imgContainer = document.getElementById('modalImg');
       const textContainer = document.getElementById('modalTextContainer');
@@ -992,19 +958,22 @@
       if (!multiContainer) {
         multiContainer = document.createElement('div');
         multiContainer.id = 'modalMultiImgs';
-        multiContainer.className = 'modal-multi-grid';
         imgContainer.parentNode.insertBefore(multiContainer, imgContainer.nextSibling);
       }
       multiContainer.innerHTML = '';
       
       imagesArray.forEach(src => {
-        const wrap = document.createElement('div');
-        wrap.className = 'modal-multi-item';
         const img = document.createElement('img');
         img.src = src;
-        wrap.appendChild(img);
-        multiContainer.appendChild(wrap);
+        img.style.width = '100%';
+        img.style.height = 'auto';
+        img.style.display = 'block';
+        img.style.marginBottom = '20px';
+        multiContainer.appendChild(img);
       });
+      
+      const lastImg = multiContainer.lastChild;
+      if (lastImg) lastImg.style.marginBottom = '0';
 
       document.querySelector('.modal-card').classList.remove('immersive');
       document.getElementById('modalOverlay').classList.add('active');
