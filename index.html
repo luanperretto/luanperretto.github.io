@@ -49,6 +49,14 @@
       margin: 0 auto; 
       line-height: 1.6; 
       overscroll-behavior-y: contain;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    body.loaded {
+      opacity: 1;
+      transform: translateY(0);
     }
     
     #topo { scroll-margin-top: 10px; }
@@ -195,7 +203,7 @@
       color: #222; 
     }
 
-    /* Espaçamento homogêneo entre os parágrafos da bio */
+    /* Espaçamento homogêneo entre os parágrafos da bio (36px) */
     .bio p {
       margin-bottom: 36px;
     }
@@ -206,7 +214,7 @@
     .gallery {
       display: flex;
       flex-direction: column;
-      gap: 8px; /* Ajustado para replicar exatamente o espaçamento de "Curitiba, Brasil com Sobre" (8px entre os elementos da galeria) */
+      gap: 36px; /* Espaçamento idêntico entre os parágrafos da bio e entre as imagens de Projetos */
       margin-bottom: 36px;
     }
 
@@ -943,6 +951,13 @@
   </div>
 
   <script>
+    // Dispara a animação de entrada suave assim que a página é carregada
+    window.addEventListener('DOMContentLoaded', () => {
+      requestAnimationFrame(() => {
+        document.body.classList.add('loaded');
+      });
+    });
+
     function openModal(imageSrc, paragraphs) {
       const imgContainer = document.getElementById('modalImageContainer');
       imgContainer.innerHTML = `<img src="${imageSrc}" alt="Ampliação do Projeto">`;
