@@ -45,15 +45,6 @@
 
     body.loaded { opacity: 1; transform: translateY(0); }
     
-    /* Trava o fundo perfeitamente na posição atual sem pular para o topo */
-    body.modal-open {
-      position: fixed;
-      left: 0;
-      right: 0;
-      width: 100%;
-      overflow: hidden;
-    }
-    
     #topo { scroll-margin-top: 10px; }
 
     nav { 
@@ -120,29 +111,63 @@
     .multi-grid-item { position: relative; }
     .multi-grid-item .work-overlay-icon { top: 14px; right: 14px; }
     .multi-grid-inner {
-      display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1.1fr 0.9fr; gap: 4px;
+      display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 3px;
       border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); background-color: #fff; aspect-ratio: 1 / 1; position: relative;
     }
-    .multi-grid-inner .work-image-wrapper:nth-child(1) { grid-column: 1 / -1; grid-row: 1; border-radius: 0; box-shadow: none; }
-    .multi-grid-inner .work-image-wrapper:nth-child(1) img { width: 100%; height: 100%; object-fit: cover; object-position: top left; }
+    .multi-grid-inner .work-image-wrapper:nth-child(1) { 
+      grid-column: 1 / -1; grid-row: 1 / span 2; 
+      border-radius: 0; box-shadow: none; overflow: hidden;
+    }
+    .multi-grid-inner .work-image-wrapper:nth-child(1) img { 
+      width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block;
+    }
     .multi-grid-inner .work-image-wrapper:nth-child(2),
-    .multi-grid-inner .work-image-wrapper:nth-child(3) { grid-row: 2; border-radius: 0; box-shadow: none; position: relative; z-index: 2; }
+    .multi-grid-inner .work-image-wrapper:nth-child(3) { 
+      grid-row: 2; border-radius: 0; box-shadow: none; overflow: hidden; position: relative; z-index: 2;
+    }
     .multi-grid-inner .work-image-wrapper:nth-child(2) img,
-    .multi-grid-inner .work-image-wrapper:nth-child(3) img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+    .multi-grid-inner .work-image-wrapper:nth-child(3) img { 
+      width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;
+    }
 
+    /* ============================================
+       MODAL DE PROJETO
+       ============================================ */
     .modal-overlay {
-      display: flex; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background-color: rgba(50, 50, 50, 0.6); z-index: 1000; justify-content: center; align-items: center; padding: 20px;
-      backdrop-filter: blur(4px); opacity: 0; visibility: hidden;
+      display: flex; 
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 100%;
+      background-color: rgba(50, 50, 50, 0.6); 
+      z-index: 1000; 
+      justify-content: center; 
+      align-items: center; 
+      padding: 20px;
+      backdrop-filter: blur(4px); 
+      opacity: 0; 
+      visibility: hidden;
       transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      overscroll-behavior: contain;
     }
     .modal-overlay.active { opacity: 1; visibility: visible; }
 
     .modal-card {
-      background-color: #fff; border-radius: 16px; overflow: hidden; max-width: 800px; width: 100%; max-height: 90vh;
-      display: flex; flex-direction: column; position: relative; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-      opacity: 0; transform: scale(0.92);
+      background-color: #fff; 
+      border-radius: 16px; 
+      overflow: hidden; 
+      max-width: 800px; 
+      width: 100%; 
+      max-height: 90vh;
+      display: flex; 
+      flex-direction: column; 
+      position: relative; 
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      opacity: 0; 
+      transform: scale(0.92);
       transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      min-height: 0;
       cursor: pointer;
     }
     .modal-overlay.active .modal-card { opacity: 1; transform: scale(1); }
@@ -153,6 +178,7 @@
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); z-index: 10; transition: transform 0.2s ease, opacity 0.3s ease;
     }
     .modal-close-btn:hover { transform: scale(1.08); }
+    .modal-close-btn:active { transform: scale(1.08); }
     .modal-card.immersive .modal-close-btn { opacity: 0; pointer-events: none; }
 
     .close-icon-container { position: relative; width: 12px; height: 12px; display: flex; align-items: center; justify-content: center; }
@@ -166,65 +192,142 @@
       -webkit-overflow-scrolling: touch; 
       overscroll-behavior: contain; 
     }
-    
+
     #modalImageContainer {
       width: 100%;
       background-color: #fff;
     }
+
     .modal-scroll-content img { 
       width: 100%; 
       height: auto; 
       display: block; 
-      margin: 0 auto;
     }
-    .modal-scroll-content img:not(:last-child) { margin-bottom: 36px; }
+    .modal-scroll-content img:not(:last-child) { margin-bottom: 20px; }
 
-    .modal-description { padding: 20px 24px; background-color: #fff; font-family: 'Work Sans', sans-serif; font-weight: 300; font-size: 16px; color: #222; }
-    .modal-description p { margin-bottom: 36px; }
+    .modal-description { 
+      padding: 20px 24px; 
+      background-color: #fff; 
+      font-family: 'Work Sans', sans-serif; 
+      font-weight: 300; 
+      font-size: 16px; 
+      color: #222; 
+    }
+    .modal-description p { margin-bottom: 12px; }
     .modal-description p:last-child { margin-bottom: 0; }
 
+    /* ============================================
+       MODAL DO FORMULÁRIO DE E-MAIL
+       ============================================ */
     .form-modal-overlay {
-      display: flex; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background-color: rgba(50, 50, 50, 0.6); z-index: 1001; justify-content: center; align-items: center; padding: 20px;
-      backdrop-filter: blur(4px); opacity: 0; visibility: hidden;
+      display: flex; 
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 100%;
+      background-color: rgba(50, 50, 50, 0.6); 
+      z-index: 1001; 
+      justify-content: center; 
+      align-items: center; 
+      padding: 20px;
+      backdrop-filter: blur(4px); 
+      opacity: 0; 
+      visibility: hidden;
       transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      overscroll-behavior: contain;
     }
     .form-modal-overlay.active { opacity: 1; visibility: visible; }
 
     .form-modal-card {
-      background-color: #fff; border-radius: 16px; overflow: hidden; max-width: 520px; width: 100%; max-height: 90vh;
-      display: flex; flex-direction: column; position: relative; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-      opacity: 0; transform: scale(0.92);
+      background-color: #fff; 
+      border-radius: 16px; 
+      overflow: hidden; 
+      max-width: 520px; 
+      width: 100%; 
+      max-height: 90vh;
+      display: flex; 
+      flex-direction: column; 
+      position: relative; 
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      opacity: 0; 
+      transform: scale(0.92);
       transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      min-height: 0;
     }
     .form-modal-overlay.active .form-modal-card { opacity: 1; transform: scale(1); }
 
-    .form-modal-scroll { overflow-y: auto; max-height: 90vh; border-radius: 16px; padding: 30px 28px; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; }
+    .form-modal-scroll { 
+      overflow-y: auto; 
+      max-height: 90vh; 
+      border-radius: 16px; 
+      padding: 30px 28px; 
+      -webkit-overflow-scrolling: touch; 
+      overscroll-behavior: contain; 
+    }
     .form-modal-scroll h2 { font-family: 'Roca Two', sans-serif; font-weight: 400; font-size: 24px; color: #111; margin-bottom: 8px; }
     .form-modal-scroll p.form-subtitle { font-family: 'Work Sans', sans-serif; font-weight: 300; font-size: 15px; color: #666; margin-bottom: 18px; }
     .form-modal-scroll label { display: block; font-family: 'Work Sans', sans-serif; font-weight: 400; font-size: 14px; color: #333; margin-bottom: 6px; margin-top: 14px; }
     .form-modal-scroll input, .form-modal-scroll textarea {
       width: 100%; font-family: 'Work Sans', sans-serif; font-weight: 300; font-size: 16px; color: #111;
       padding: 12px 14px; border: 1px solid #ddd; border-radius: 8px; background-color: #fafafa; outline: none;
+      transition: border-color 0.2s, background-color 0.2s;
     }
     .form-modal-scroll input:focus, .form-modal-scroll textarea:focus { border-color: #333; background-color: #fff; }
-    .form-modal-scroll textarea { resize: vertical; min-height: 110px; }
+    .form-modal-scroll textarea { resize: vertical; min-height: 110px; line-height: 1.5; }
     .form-modal-scroll button[type="submit"] {
       margin-top: 22px; width: 100%; font-family: 'Roca Two', sans-serif; font-weight: 400; font-size: 17px;
       color: #fff; background-color: #111; border: none; border-radius: 8px; padding: 12px 20px; cursor: pointer;
+      transition: background-color 0.2s;
     }
+    .form-modal-scroll button[type="submit"]:hover { background-color: #333; }
     .form-close-btn {
       position: absolute; top: 14px; right: 14px; width: 36px; height: 36px; background: rgba(255, 255, 255, 0.9);
       border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); z-index: 10;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); z-index: 10; transition: transform 0.2s ease;
     }
+    .form-close-btn:hover { transform: scale(1.08); }
+    .form-close-btn:active { transform: scale(1.08); }
 
     footer { padding-bottom: 36px; text-align: center; }
 
     @media (max-width: 500px) {
-      .modal-overlay, .form-modal-overlay { padding: 0; align-items: stretch; }
-      .modal-card, .form-modal-card { max-height: 100vh; max-width: 100%; width: 100%; height: 100vh; border-radius: 0; margin: 0; }
-      .modal-scroll-content, .form-modal-scroll { max-height: 100vh; border-radius: 0; }
+      nav {
+        padding-top: 10px; padding-bottom: 10px;
+      }
+      nav a, .back-to-top {
+        font-size: 17px;
+      }
+
+      #sobre, #projetos { scroll-margin-top: 60px; }
+
+      .modal-overlay, .form-modal-overlay { 
+        padding: 0; 
+        align-items: stretch; 
+      }
+      .modal-card, .form-modal-card { 
+        max-height: 100vh; 
+        max-width: 100%; 
+        width: 100%; 
+        height: 100vh; 
+        border-radius: 0; 
+        margin: 0; 
+      }
+      .modal-scroll-content, .form-modal-scroll { 
+        max-height: 100vh; 
+        border-radius: 0; 
+      }
+      .modal-scroll-content::-webkit-scrollbar {
+        display: none;
+        width: 0;
+        height: 0;
+      }
+      .modal-scroll-content {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+      .modal-close-btn { top: 14px; right: 14px; }
+      .form-close-btn { top: 14px; right: 14px; }
     }
   </style>
 </head>
@@ -365,6 +468,7 @@
         </div>
       </div>
 
+      <!-- Bloco agrupado: imagens 6, 7 e 8 -->
       <div class="work-item multi-grid-item" onclick="openMultiModal(['imagem6.png', 'imagem7.png', 'imagem8.png'])">
         <div class="multi-grid-inner">
           <div class="work-image-wrapper">
@@ -392,6 +496,7 @@
     <a href="#topo" class="back-to-top">Voltar</a>
   </footer>
 
+  <!-- Modal de Projeto -->
   <div id="modalOverlay" class="modal-overlay" onclick="closeModalOnOverlay(event)">
     <div class="modal-card" onclick="toggleImmersive(event)">
       <button class="modal-close-btn" onclick="closeModal()">
@@ -409,6 +514,7 @@
     </div>
   </div>
 
+  <!-- Modal do Formulário de E-mail -->
   <div id="formModalOverlay" class="form-modal-overlay" onclick="closeFormModalOnOverlay(event)">
     <div class="form-modal-card">
       <button class="form-close-btn" onclick="closeFormModal()">
@@ -442,8 +548,7 @@
   </div>
 
   <script>
-    let scrollPosition = 0;
-
+    /* Fade-in da página no carregamento */
     window.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
         requestAnimationFrame(() => {
@@ -452,18 +557,9 @@
       }, 100);
     });
 
-    function lockScroll() {
-      scrollPosition = window.pageYOffset;
-      document.body.style.top = `-${scrollPosition}px`;
-      document.body.classList.add('modal-open');
-    }
-
-    function unlockScroll() {
-      document.body.classList.remove('modal-open');
-      document.body.style.top = '';
-      window.scrollTo(0, scrollPosition);
-    }
-
+    /* ============================================
+       MODAL DE PROJETO (imagem única + texto)
+       ============================================ */
     function openModal(imageSrc, paragraphs) {
       const imgContainer = document.getElementById('modalImageContainer');
       imgContainer.innerHTML = `<img src="${imageSrc}" alt="Ampliação do Projeto">`;
@@ -479,9 +575,16 @@
       document.getElementById('modalDescriptionWrapper').style.display = 'block';
       document.querySelector('.modal-card').classList.remove('immersive');
       document.getElementById('modalOverlay').classList.add('active');
-      lockScroll();
+      document.body.style.overflow = 'hidden';
+
+      const modalScroll = document.querySelector('.modal-scroll-content');
+      modalScroll.scrollTop = 0;
+      setTimeout(() => { modalScroll.scrollTop = 0; }, 10);
     }
 
+    /* ============================================
+       MODAL DE PROJETO (múltiplas imagens, sem texto)
+       ============================================ */
     function openMultiModal(imageSrcs) {
       const imgContainer = document.getElementById('modalImageContainer');
       imgContainer.innerHTML = '';
@@ -498,42 +601,124 @@
 
       document.querySelector('.modal-card').classList.remove('immersive');
       document.getElementById('modalOverlay').classList.add('active');
-      lockScroll();
+      document.body.style.overflow = 'hidden';
+
+      const modalScroll = document.querySelector('.modal-scroll-content');
+      modalScroll.scrollTop = 0;
+      setTimeout(() => { modalScroll.scrollTop = 0; }, 10);
     }
 
     function closeModal() {
       document.getElementById('modalOverlay').classList.remove('active');
-      unlockScroll();
+      document.body.style.overflow = 'auto';
+      
+      const modalScroll = document.querySelector('.modal-scroll-content');
+      modalScroll.scrollTop = 0;
+
+      document.querySelector('.modal-card').classList.remove('immersive');
     }
 
     function closeModalOnOverlay(event) {
-      if (event.target.id === 'modalOverlay') {
-        closeModal();
-      }
-    }
-
-    function openFormModal(event) {
-      event.preventDefault();
-      document.getElementById('formModalOverlay').classList.add('active');
-      lockScroll();
-    }
-
-    function closeFormModal() {
-      document.getElementById('formModalOverlay').classList.remove('active');
-      unlockScroll();
-    }
-
-    function closeFormModalOnOverlay(event) {
-      if (event.target.id === 'formModalOverlay') {
-        closeFormModal();
-      }
+      if (event.target.id === 'modalOverlay') closeModal();
     }
 
     function toggleImmersive(event) {
       if (event.target.closest('.modal-description')) return;
+      if (event.target.closest('.modal-close-btn')) return;
+      event.stopPropagation();
       const card = document.querySelector('.modal-card');
       card.classList.toggle('immersive');
     }
+
+    /* ============================================
+       MODAL DO FORMULÁRIO DE E-MAIL
+       ============================================ */
+    function openFormModal(event) {
+      if (event) event.preventDefault();
+      document.getElementById('formModalOverlay').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeFormModal() {
+      document.getElementById('formModalOverlay').classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    function closeFormModalOnOverlay(event) {
+      if (event.target.id === 'formModalOverlay') closeFormModal();
+    }
+
+    /* ESC fecha modais */
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeModal();
+        closeFormModal();
+      }
+    });
+
+    /* PULL TO REFRESH NO CELULAR */
+    (function() {
+      let startY = 0;
+      let isPulling = false;
+      const nav = document.querySelector('nav');
+      const threshold = 100;
+
+      nav.addEventListener('touchstart', function(e) {
+        if (window.scrollY === 0) {
+          startY = e.touches[0].clientY;
+          isPulling = true;
+        }
+      }, { passive: true });
+
+      nav.addEventListener('touchmove', function(e) {
+        if (!isPulling) return;
+        const currentY = e.touches[0].clientY;
+        const distance = currentY - startY;
+
+        if (distance > 0) {
+          nav.style.transform = `translateY(${Math.min(distance * 0.4, 40)}px)`;
+          nav.style.transition = 'none';
+        }
+      }, { passive: true });
+
+      nav.addEventListener('touchend', function(e) {
+        if (!isPulling) return;
+        const endY = e.changedTouches[0].clientY;
+        const distance = endY - startY;
+
+        nav.style.transition = 'transform 0.3s ease';
+        nav.style.transform = 'translateY(0)';
+
+        if (distance > threshold) location.reload();
+
+        isPulling = false;
+        startY = 0;
+      });
+    })();
+
+    /* DESELECIONA BOTÕES AO ROLAR NO CELULAR */
+    (function() {
+      window.addEventListener('scroll', function() {
+        if (!('ontouchstart' in window)) return;
+
+        const activeEl = document.activeElement;
+        if (activeEl && activeEl.tagName === 'A' && 
+            (activeEl.closest('nav') || activeEl.classList.contains('back-to-top'))) {
+          activeEl.blur();
+        }
+      }, { passive: true });
+
+      document.addEventListener('touchstart', function(e) {
+        if (!('ontouchstart' in window)) return;
+
+        const activeEl = document.activeElement;
+        if (activeEl && activeEl.tagName === 'A' && 
+            (activeEl.closest('nav') || activeEl.classList.contains('back-to-top'))) {
+          if (!activeEl.contains(e.target)) activeEl.blur();
+        }
+      }, { passive: true });
+    })();
   </script>
+
 </body>
 </html>
