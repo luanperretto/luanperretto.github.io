@@ -60,7 +60,7 @@
       gap: 0;
       padding-top: 12px;
       padding-bottom: 12px; 
-      margin-bottom: 36px; /* Padronizado para 36px */
+      margin-bottom: 36px; /* Padronizado para 36px (Espaçamento replicado exatamente entre o menu e o título H1) */
       position: sticky;
       top: 0;
       background-color: #fff;
@@ -458,7 +458,7 @@
       display: block;
     }
     .modal-scroll-content img:not(:last-child) {
-      margin-bottom: 10px;
+      margin-bottom: 36px; /* Padronizado para 36px de espaço entre as imagens dentro do modal */
     }
 
     .modal-description {
@@ -471,7 +471,7 @@
       line-height: 1.6;
     }
 
-    .modal-description p { margin-bottom: 12px; }
+    .modal-description p { margin-bottom: 36px; /* Padronizado para 36px de espaço entre os parágrafos do modal */ }
     .modal-description p:last-child { margin-bottom: 0; }
 
     /* ============================================
@@ -630,8 +630,8 @@
     .form-close-btn:active { transform: scale(1.08); }
 
     footer {
-      margin-top: 0; /* Removido para respeitar o espaçamento homogêneo de 36px vindo da galeria */
-      padding: 0 0 36px 0; /* Padronizado para 36px de espaço entre o botão Voltar e o final da página */
+      margin-top: 0;
+      padding: 0 0 36px 0;
       text-align: center;
     }
 
@@ -694,6 +694,9 @@
         margin: 0;
         padding: 0;
       }
+      .modal-scroll-content img:not(:last-child) {
+        margin-bottom: 0;
+      }
       .modal-description {
         padding: 20px 16px;
         background-color: #fff;
@@ -730,7 +733,7 @@
     <a href="#projetos">Projetos</a>
   </nav>
 
-  <h1>Luan Perretto</h1>
+  <h1 style="margin-top: 0;">Luan Perretto</h1>
   <div class="subtitle">Editor de Geografia, cartógrafo e infografista</div>
 
   <!-- Redes Sociais - ícones em PNG do repositório -->
