@@ -28,7 +28,7 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; overscroll-behavior-y: contain; }
+    html { scroll-behavior: smooth; overscroll-behavior-y: none; }
 
     body { 
       color: #111; 
@@ -37,13 +37,14 @@
       max-width: 650px; 
       margin: 0 auto; 
       line-height: 1.6; 
-      overscroll-behavior-y: contain;
+      overscroll-behavior-y: none;
       opacity: 0;
       transform: translateY(20px);
       transition: opacity 2.4s cubic-bezier(0.16, 1, 0.3, 1), transform 2.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     body.loaded { opacity: 1; transform: translateY(0); }
+    body.modal-open { overflow: hidden; height: 100vh; }
     
     #topo { scroll-margin-top: 10px; }
 
@@ -150,9 +151,14 @@
     .close-line-1 { position: absolute; width: 12px; height: 1px; background-color: #333; transform: rotate(45deg); }
     .close-line-2 { position: absolute; width: 12px; height: 1px; background-color: #333; transform: rotate(-45deg); }
 
-    .modal-scroll-content { overflow-y: auto; max-height: 90vh; border-radius: 16px; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; }
+    .modal-scroll-content { 
+      overflow-y: auto; 
+      max-height: 90vh; 
+      border-radius: 16px; 
+      -webkit-overflow-scrolling: touch; 
+      overscroll-behavior: contain; 
+    }
     
-    /* CORREÇÃO APLICADA: Centralização e proporção correta das imagens no modal */
     #modalImageContainer {
       width: 100%;
       background-color: #fff;
@@ -185,7 +191,7 @@
     }
     .form-modal-overlay.active .form-modal-card { opacity: 1; transform: scale(1); }
 
-    .form-modal-scroll { overflow-y: auto; max-height: 90vh; border-radius: 16px; padding: 30px 28px; }
+    .form-modal-scroll { overflow-y: auto; max-height: 90vh; border-radius: 16px; padding: 30px 28px; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; }
     .form-modal-scroll h2 { font-family: 'Roca Two', sans-serif; font-weight: 400; font-size: 24px; color: #111; margin-bottom: 8px; }
     .form-modal-scroll p.form-subtitle { font-family: 'Work Sans', sans-serif; font-weight: 300; font-size: 15px; color: #666; margin-bottom: 18px; }
     .form-modal-scroll label { display: block; font-family: 'Work Sans', sans-serif; font-weight: 400; font-size: 14px; color: #333; margin-bottom: 6px; margin-top: 14px; }
@@ -451,6 +457,7 @@
       document.getElementById('modalDescriptionWrapper').style.display = 'block';
       document.querySelector('.modal-card').classList.remove('immersive');
       document.getElementById('modalOverlay').classList.add('active');
+      document.body.classList.add('modal-open');
     }
 
     function openMultiModal(imageSrcs) {
@@ -469,10 +476,12 @@
 
       document.querySelector('.modal-card').classList.remove('immersive');
       document.getElementById('modalOverlay').classList.add('active');
+      document.body.classList.add('modal-open');
     }
 
     function closeModal() {
       document.getElementById('modalOverlay').classList.remove('active');
+      document.body.classList.remove('modal-open');
     }
 
     function closeModalOnOverlay(event) {
@@ -484,10 +493,12 @@
     function openFormModal(event) {
       event.preventDefault();
       document.getElementById('formModalOverlay').classList.add('active');
+      document.body.classList.add('modal-open');
     }
 
     function closeFormModal() {
       document.getElementById('formModalOverlay').classList.remove('active');
+      document.body.classList.remove('modal-open');
     }
 
     function closeFormModalOnOverlay(event) {
