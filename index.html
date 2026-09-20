@@ -437,7 +437,6 @@
       overscroll-behavior: contain;
     }
 
-    /* Suporte a múltiplas imagens no modal */
     .modal-scroll-content img {
       width: 100%;
       height: auto;
@@ -673,13 +672,12 @@
         width: 0;
         height: 0;
       }
-      .modal-card img {
+      .modal-scroll-content img {
         width: 100%;
         max-width: 100%;
         display: block;
         margin: 0;
         padding: 0;
-        object-fit: cover;
       }
       .modal-description {
         padding: 20px 16px;
@@ -846,10 +844,8 @@
         </div>
       </div>
 
-      <!-- Bloco agrupado: imagens 6, 7 e 8 -->
-      <div class="work-item multi-grid-item" onclick="openMultiModal(['imagem6.png', 'imagem7.png', 'imagem8.png'], [
-        'População por UF: análise detalhada e comparativa das Unidades Federativas do Brasil através de dados recentes do IBGE.'
-      ])">
+      <!-- Bloco agrupado: imagens 6, 7 e 8 (modal triplo sem texto) -->
+      <div class="work-item multi-grid-item" onclick="openMultiModal(['imagem6.png', 'imagem7.png', 'imagem8.png'])">
         <div class="multi-grid-inner">
           <div class="work-image-wrapper">
             <img src="imagem6.png" alt="Trabalho 6">
@@ -887,7 +883,7 @@
       </button>
       <div class="modal-scroll-content">
         <div id="modalImageContainer"></div>
-        <div class="modal-description">
+        <div class="modal-description" id="modalDescriptionWrapper">
           <div id="modalTextContainer"></div>
         </div>
       </div>
@@ -939,11 +935,12 @@
         textContainer.appendChild(p);
       });
 
+      document.getElementById('modalDescriptionWrapper').style.display = 'block';
       document.querySelector('.modal-card').classList.remove('immersive');
       document.getElementById('modalOverlay').classList.add('active');
     }
 
-    function openMultiModal(imageSrcs, paragraphs) {
+    function openMultiModal(imageSrcs) {
       const imgContainer = document.getElementById('modalImageContainer');
       imgContainer.innerHTML = '';
       
@@ -955,13 +952,9 @@
         imgContainer.appendChild(img);
       });
 
-      const textContainer = document.getElementById('modalTextContainer');
-      textContainer.innerHTML = '';
-      paragraphs.forEach(text => {
-        const p = document.createElement('p');
-        p.innerText = text;
-        textContainer.appendChild(p);
-      });
+      // Esconde completamente a área de texto para o modal triplo
+      document.getElementById('modalTextContainer').innerHTML = '';
+      document.getElementById('modalDescriptionWrapper').style.display = 'none';
 
       document.querySelector('.modal-card').classList.remove('immersive');
       document.getElementById('modalOverlay').classList.add('active');
