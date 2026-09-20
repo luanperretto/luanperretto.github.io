@@ -116,26 +116,55 @@
     .expand-arrow-top-right { position: absolute; top: 0; right: 0; width: 5px; height: 5px; border-top: 1px solid #333; border-right: 1px solid #333; }
     .expand-arrow-bottom-left { position: absolute; bottom: 0; left: 0; width: 5px; height: 5px; border-bottom: 1px solid #333; border-left: 1px solid #333; }
 
+    /* ============================================
+       GRID AGRUPADO (imagens 6, 7 e 8 na landing page)
+       Mesmo layout do Gemini: img 6 em cima, 7 e 8 embaixo
+       ============================================ */
     .multi-grid-item { position: relative; }
     .multi-grid-item .work-overlay-icon { top: 14px; right: 14px; }
+    
     .multi-grid-inner {
-      display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 3px;
-      border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); background-color: #fff; aspect-ratio: 1 / 1; position: relative;
+      display: grid; 
+      grid-template-columns: 1fr 1fr; 
+      grid-template-rows: 1.1fr 0.9fr; 
+      gap: 3px;
+      border-radius: 10px; 
+      overflow: hidden; 
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); 
+      background-color: #fff; 
+      aspect-ratio: 1 / 1; 
+      position: relative;
     }
     .multi-grid-inner .work-image-wrapper:nth-child(1) { 
-      grid-column: 1 / -1; grid-row: 1 / span 2; 
-      border-radius: 0; box-shadow: none; overflow: hidden;
+      grid-column: 1 / -1; 
+      grid-row: 1; 
+      border-radius: 0; 
+      box-shadow: none; 
+      overflow: hidden;
     }
     .multi-grid-inner .work-image-wrapper:nth-child(1) img { 
-      width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block;
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover; 
+      object-position: top center; 
+      display: block;
     }
     .multi-grid-inner .work-image-wrapper:nth-child(2),
     .multi-grid-inner .work-image-wrapper:nth-child(3) { 
-      grid-row: 2; border-radius: 0; box-shadow: none; overflow: hidden; position: relative; z-index: 2;
+      grid-row: 2; 
+      border-radius: 0; 
+      box-shadow: none; 
+      overflow: hidden;
+      position: relative; 
+      z-index: 2; 
     }
     .multi-grid-inner .work-image-wrapper:nth-child(2) img,
     .multi-grid-inner .work-image-wrapper:nth-child(3) img { 
-      width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover; 
+      object-position: top center; 
+      display: block;
     }
 
     /* ============================================
@@ -476,7 +505,7 @@
           </div>
         </div>
 
-        <!-- Bloco agrupado: imagens 6, 7 e 8 -->
+        <!-- Bloco agrupado: imagens 6, 7 e 8 (mesmo layout do Gemini) -->
         <div class="work-item multi-grid-item" onclick="openMultiModal(['imagem6.png', 'imagem7.png', 'imagem8.png'])">
           <div class="multi-grid-inner">
             <div class="work-image-wrapper">
