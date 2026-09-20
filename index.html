@@ -44,7 +44,15 @@
     }
 
     body.loaded { opacity: 1; transform: translateY(0); }
-    body.modal-open { overflow: hidden; height: 100vh; }
+    
+    /* Trava o fundo perfeitamente sem perder a posição do scroll e impede scroll externo */
+    body.modal-open {
+      position: fixed;
+      left: 0;
+      right: 0;
+      width: 100%;
+      overflow: hidden;
+    }
     
     #topo { scroll-margin-top: 10px; }
 
@@ -434,6 +442,8 @@
   </div>
 
   <script>
+    let scrollPosition = 0;
+
     window.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
         requestAnimationFrame(() => {
@@ -441,6 +451,18 @@
         });
       }, 100);
     });
+
+    function lockScroll() {
+      scrollPosition = window.pageYOffset;
+      document.body.style.top = `-${scrollPosition}px`;
+      document.body.classList.add('modal-open');
+    }
+
+    function unlockScroll() {
+      document.body.classList.remove('modal-open');
+      document.body.style.top = '';
+      window.scrollTo(0, scrollPosition);
+    }
 
     function openModal(imageSrc, paragraphs) {
       const imgContainer = document.getElementById('modalImageContainer');
@@ -457,7 +479,7 @@
       document.getElementById('modalDescriptionWrapper').style.display = 'block';
       document.querySelector('.modal-card').classList.remove('immersive');
       document.getElementById('modalOverlay').classList.add('active');
-      document.body.classList.add('modal-open');
+      lockScroll();
     }
 
     function openMultiModal(imageSrcs) {
@@ -476,12 +498,12 @@
 
       document.querySelector('.modal-card').classList.remove('immersive');
       document.getElementById('modalOverlay').classList.add('active');
-      document.body.classList.add('modal-open');
+      lockScroll();
     }
 
     function closeModal() {
       document.getElementById('modalOverlay').classList.remove('active');
-      document.body.classList.remove('modal-open');
+      unlockScroll();
     }
 
     function closeModalOnOverlay(event) {
@@ -493,12 +515,12 @@
     function openFormModal(event) {
       event.preventDefault();
       document.getElementById('formModalOverlay').classList.add('active');
-      document.body.classList.add('modal-open');
+      lockScroll();
     }
 
     function closeFormModal() {
       document.getElementById('formModalOverlay').classList.remove('active');
-      document.body.classList.remove('modal-open');
+      unlockScroll();
     }
 
     function closeFormModalOnOverlay(event) {
