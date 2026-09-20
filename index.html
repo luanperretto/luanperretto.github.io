@@ -30,6 +30,12 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; overscroll-behavior-y: none; }
 
+    /* Trava o scroll da página de forma limpa quando o modal abre */
+    html.modal-open, body.modal-open {
+      overflow: hidden;
+      height: 100%;
+    }
+
     body { 
       color: #111; 
       background-color: #fff; 
@@ -44,15 +50,6 @@
     }
 
     body.loaded { opacity: 1; transform: translateY(0); }
-    
-    /* Trava o fundo perfeitamente sem perder a posição do scroll e impede scroll externo */
-    body.modal-open {
-      position: fixed;
-      left: 0;
-      right: 0;
-      width: 100%;
-      overflow: hidden;
-    }
     
     #topo { scroll-margin-top: 10px; }
 
@@ -442,8 +439,6 @@
   </div>
 
   <script>
-    let scrollPosition = 0;
-
     window.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
         requestAnimationFrame(() => {
@@ -453,15 +448,13 @@
     });
 
     function lockScroll() {
-      scrollPosition = window.pageYOffset;
-      document.body.style.top = `-${scrollPosition}px`;
+      document.documentElement.classList.add('modal-open');
       document.body.classList.add('modal-open');
     }
 
     function unlockScroll() {
+      document.documentElement.classList.remove('modal-open');
       document.body.classList.remove('modal-open');
-      document.body.style.top = '';
-      window.scrollTo(0, scrollPosition);
     }
 
     function openModal(imageSrc, paragraphs) {
