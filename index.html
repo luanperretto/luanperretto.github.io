@@ -103,13 +103,13 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    /* O scroll-margin-top faz o título da seção ficar escondido atrás do cabeçalho fixo */
-    #sobre, #projetos { scroll-margin-top: 20px; }
+    /* Ajuste da margem de scroll para compensar perfeitamente a barra fixa */
+    #sobre, #projetos { scroll-margin-top: 65px; }
 
     h1 { 
       font-family: 'Roca Two', sans-serif;
       font-weight: 700;
-      font-size: 54px; 
+      font-size: 52px; /* Reduzido em 2px (de 54px para 52px) */
       margin-bottom: 4px; 
       color: #111; 
       line-height: 1.1;
@@ -159,7 +159,6 @@
       display: block;
       object-fit: contain;
     }
-    /* Ajuste fino de proporção: WhatsApp e GitHub ligeiramente maiores */
     .social-links a img[alt="WhatsApp"] {
       transform: scale(1.12);
     }
@@ -176,10 +175,18 @@
       font-weight: 300;
       font-size: 16px;
       color: #222;
-      margin-bottom: 30px;
+      margin-bottom: 4px;
     }
     .email-text a { color: #222; text-decoration: none; }
     .email-text a:hover { text-decoration: underline; }
+
+    .location-text {
+      font-family: 'Work Sans', sans-serif;
+      font-weight: 300;
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 30px;
+    }
 
     .bio { 
       font-family: 'Work Sans', sans-serif;
@@ -212,7 +219,6 @@
 
     .work-item:hover img { transform: scale(1.02); }
 
-    /* Bolinha de expandir padrão */
     .work-overlay-icon {
       position: absolute;
       top: 14px;
@@ -638,7 +644,7 @@
       nav a:first-child { margin: 0; }
       nav a:last-child { margin: 0; }
 
-      #sobre, #projetos { scroll-margin-top: 15px; }
+      #sobre, #projetos { scroll-margin-top: 60px; }
 
       .modal-overlay {
         padding: 0;
@@ -740,11 +746,13 @@
   <div class="email-text">
     <a href="mailto:luan.perretto@gmail.com">luan.perretto@gmail.com</a>
   </div>
+  <div class="location-text">Curitiba, Brasil</div>
 
   <section id="sobre">
     <h2 class="section-title">Sobre</h2>
     <div class="bio">
-      Colaboro com editoras, edtechs e sistemas de ensino no desenvolvimento de coleções e materiais educacionais de Geografia do Ensino Fundamental e Médio. Atuo na edição e autoria de conteúdos e textos, assim como na ilustração de mapas e infográficos. No momento estou livre para novos projetos e oportunidades, aguardo seu contato!
+      Editor de conteúdo, cartógrafo e infografista atuando no mercado editorial desde 2020. Colaboro com editoras, edtechs e sistemas de ensino na confecção de materiais educacionais de Geografia do Ensino Fundamental e Médio. Meu trabalho envolve a edição e autoria de conteúdos geográficos em texto, assim como a ilustração de mapas e infográficos de todas as áreas do conhecimento.<br><br>
+      Possuo ampla experiência com editoras e empresas do setor de educação, atendendo também órgãos públicos, terceiro setor, jornais, agências e mercado corporativo. Além disso, tenho livros publicados por editoras, alguns deles aprovados no PNLD. No momento, estou livre para novos projetos e oportunidades, aguardo seu contato!
     </div>
   </section>
 
@@ -944,7 +952,6 @@
       const imgContainer = document.getElementById('modalImageContainer');
       imgContainer.innerHTML = '';
       
-      // Adiciona as 3 imagens em sequência vertical no modal
       imageSrcs.forEach((src, index) => {
         const img = document.createElement('img');
         img.src = src;
@@ -952,7 +959,6 @@
         imgContainer.appendChild(img);
       });
 
-      // Esconde completamente a área de texto para o modal triplo
       document.getElementById('modalTextContainer').innerHTML = '';
       document.getElementById('modalDescriptionWrapper').style.display = 'none';
 
