@@ -60,7 +60,7 @@
       gap: 0;
       padding-top: 12px;
       padding-bottom: 12px; 
-      margin-bottom: 12px; 
+      margin-bottom: 36px; /* Padronizado para 36px */
       position: sticky;
       top: 0;
       background-color: #fff;
@@ -103,13 +103,13 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    /* Ajuste da margem de scroll para compensar perfeitamente a barra fixa */
-    #sobre, #projetos { scroll-margin-top: 65px; }
+    /* Ajuste da margem de scroll para compensar perfeitamente a barra fixa + o respiro homogêneo */
+    #sobre, #projetos { scroll-margin-top: 72px; }
 
     h1 { 
       font-family: 'Roca Two', sans-serif;
       font-weight: 700;
-      font-size: 52px; /* Reduzido em 2px (de 54px para 52px) */
+      font-size: 52px;
       margin-bottom: 4px; 
       color: #111; 
       line-height: 1.1;
@@ -124,14 +124,14 @@
       margin-bottom: 20px; 
     }
     
-    section { margin-bottom: 40px; }
+    section { margin-bottom: 36px; } /* Padronizado para 36px */
     
     .section-title { 
       font-family: 'Roca Two', sans-serif;
       font-weight: 400;
       font-size: 24px; 
       letter-spacing: 0.5px;
-      margin-bottom: 25px; 
+      margin-bottom: 36px; /* Padronizado para 36px (Espaçamento entre o título Sobre/Projetos e o primeiro elemento abaixo) */
       color: #111;
     }
 
@@ -185,7 +185,7 @@
       font-weight: 300;
       font-size: 16px;
       color: #555;
-      margin-bottom: 30px;
+      margin-bottom: 36px; /* Padronizado para 36px (Espaçamento exato entre Curitiba, Brasil e o título Sobre) */
     }
 
     .bio { 
@@ -195,10 +195,19 @@
       color: #222; 
     }
 
+    /* Espaçamento homogêneo entre os parágrafos da bio */
+    .bio p {
+      margin-bottom: 36px; /* Padronizado para 36px */
+    }
+    .bio p:last-child {
+      margin-bottom: 0;
+    }
+
     .gallery {
       display: flex;
       flex-direction: column;
-      gap: 35px;
+      gap: 36px; /* Padronizado para 36px (Espaçamento homogêneo entre os blocos de imagens de projetos) */
+      margin-bottom: 36px; /* Padronizado para 36px (Espaçamento exato entre o último bloco de imagens e o botão Voltar) */
     }
 
     .work-item { cursor: pointer; }
@@ -621,8 +630,8 @@
     .form-close-btn:active { transform: scale(1.08); }
 
     footer {
-      margin-top: 40px;
-      padding: 20px 0 30px 0;
+      margin-top: 0; /* Removido para respeitar o espaçamento homogêneo de 36px vindo da galeria */
+      padding: 0 0 36px 0; /* Padronizado para 36px de espaço entre o botão Voltar e o final da página */
       text-align: center;
     }
 
@@ -644,7 +653,7 @@
       nav a:first-child { margin: 0; }
       nav a:last-child { margin: 0; }
 
-      #sobre, #projetos { scroll-margin-top: 60px; }
+      #sobre, #projetos { scroll-margin-top: 64px; }
 
       .modal-overlay {
         padding: 0;
@@ -722,7 +731,7 @@
   </nav>
 
   <h1>Luan Perretto</h1>
-  <div class="subtitle">Editor de Geografia | Cartógrafo | Infografista</div>
+  <div class="subtitle">Editor de Geografia, cartógrafo e infografista</div>
 
   <!-- Redes Sociais - ícones em PNG do repositório -->
   <div class="social-links">
@@ -751,8 +760,8 @@
   <section id="sobre">
     <h2 class="section-title">Sobre</h2>
     <div class="bio">
-      Editor de conteúdo, cartógrafo e infografista atuando no mercado editorial desde 2020. Colaboro com editoras, edtechs e sistemas de ensino na confecção de materiais educacionais de Geografia do Ensino Fundamental e Médio. Meu trabalho envolve a edição e autoria de conteúdos geográficos em texto, assim como a ilustração de mapas e infográficos de todas as áreas do conhecimento.<br><br>
-      Possuo ampla experiência com editoras e empresas do setor de educação, atendendo também órgãos públicos, terceiro setor, jornais, agências e mercado corporativo. Além disso, tenho livros publicados por editoras, alguns deles aprovados no PNLD. No momento, estou livre para novos projetos e oportunidades, aguardo seu contato!
+      <p>Editor de conteúdo, cartógrafo e infografista atuando no mercado editorial desde 2020. Colaboro com editoras, edtechs e sistemas de ensino na confecção de materiais educacionais de Geografia do Ensino Fundamental e Médio. Meu trabalho envolve a edição e autoria de conteúdos geográficos em texto, assim como a ilustração de mapas e infográficos de todas as áreas do conhecimento.</p>
+      <p>Possuo ampla experiência com editoras e empresas do setor de educação, atendendo também órgãos públicos, terceiro setor, jornais, agências e mercado corporativo. Além disso, tenho livros publicados por editoras, alguns deles aprovados no PNLD. No momento, estou livre para novos projetos e oportunidades, aguardo seu contato!</p>
     </div>
   </section>
 
@@ -818,7 +827,7 @@
         'A agropecuária brasileira segue crescendo rapidamente na cobertura e uso do solo, com grandes áreas produtivas extensivas no Pará e Tocantins, e intensivas em Mato Grosso e São Paulo. Estas áreas agropecuárias se somam aos insumos, agroindústria e agrosserviços, constituindo o agronegócio brasileiro, que representou 25% do Produto Interno Bruto (PIB) em 2025, segundo pesquisa do CEPEA da Universidade de São Paulo.',
         'O Brasil apresenta a segunda maior cobertura florestal do mundo, 496 milhões de hectares (IBGE, 2024). No entanto, o Brasil é o líder mundial em perda florestal, com média de 1,5 milhão de hectares de florestas suprimidos ao ano, medida calculada em relação aos últimos 7 anos (MapBiomas, 2025).',
         'Nesse sentido, as florestas tiveram supressão de cerca de 10% nas últimas décadas, principalmente nos biomas Amazônia e Cerrado, aprofundando a fronteira agropecuária na Amazônia Legal por núcleos no MATOPIBA e na AMACRO. Mesmo assim, os estados do Amazonas, Amapá e Roraima ainda contam com 95% de seus territórios compostos por massas florestais (MapBiomas, 2023).',
-        'Outra informação interessante encontrada por mim, foi do Monitor de Recuperação do MapBiomas, que agrega os dados de recuperação de mata nativa do Brasil. Ele mostra que o país recuperou cerca de 1 milhão de hectares totais de florestas entre 2000 e 2025. Um valor absoluto expressivo, porém, muito aquém do que já foi perdido no país até então.'
+        'Outra informação interessante encontrada por nltk, foi do Monitor de Recuperação do MapBiomas, que agrega os dados de recuperação de mata nativa do Brasil. Ele mostra que o país recuperou cerca de 1 milhão de hectares totais de florestas entre 2000 e 2025. Um valor absoluto expressivo, porém, muito aquém do que já foi perdido no país até então.'
       ])">
         <div class="work-image-wrapper">
           <img src="imagem4.png" alt="Trabalho 4">
