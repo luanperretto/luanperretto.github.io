@@ -52,10 +52,31 @@
         }
 
         header {
-            text-align: center;
             margin-bottom: 3.5rem;
             padding-bottom: 2rem;
             border-bottom: 1px solid var(--border-color);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            font-family: 'Roca', serif;
+            text-transform: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
         }
 
         h1, h2, h3, .title {
@@ -64,39 +85,43 @@
         }
 
         header h1 {
-            font-size: 2.8rem;
+            font-size: 3.2rem;
             margin-bottom: 0.5rem;
             color: #1A202C;
         }
 
         .user-title {
-            font-family: 'Roca', serif;
+            font-family: 'Work Sans', sans-serif;
             font-size: 1.15rem;
             color: var(--muted-color);
-            font-weight: 400;
-            margin-bottom: 1.8rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
         }
 
-        nav {
+        .social-links {
             display: flex;
-            justify-content: center;
-            gap: 2.5rem;
-            flex-wrap: wrap;
+            gap: 1.2rem;
+            margin-bottom: 1rem;
+            align-items: center;
         }
 
-        nav a {
-            font-family: 'Roca', serif;
-            text-transform: uppercase;
-            font-weight: 700;
-            font-size: 0.9rem;
-            letter-spacing: 0.08em;
-            color: var(--text-color);
-            text-decoration: none;
-            transition: color 0.2s ease;
+        .social-links img {
+            width: 28px;
+            height: 28px;
+            transition: transform 0.2s;
         }
 
-        nav a:hover {
-            color: var(--accent-color);
+        .social-links img:hover {
+            transform: scale(1.1);
+        }
+
+        .header-meta {
+            font-size: 0.95rem;
+            color: var(--muted-color);
+        }
+
+        .header-meta p {
+            margin-bottom: 0.3rem;
         }
 
         main {
@@ -113,8 +138,8 @@
         }
 
         .card h2 {
-            font-size: 1.6rem;
-            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            margin-bottom: 1.2rem;
             color: #1A202C;
         }
 
@@ -255,23 +280,6 @@
             box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         }
 
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .social-links img {
-            width: 36px;
-            height: 36px;
-            transition: transform 0.2s;
-        }
-
-        .social-links img:hover {
-            transform: scale(1.1);
-        }
-
         footer {
             text-align: center;
             margin-top: 4rem;
@@ -294,27 +302,38 @@
 
     <div class="container">
         <header>
-            <h1>Luan Perretto</h1>
-            <div class="user-title">Editor de Geografia | Cartógrafo | Infografista</div>
             <nav>
-                <a href="#sobre">SOBRE</a>
-                <a href="#portfolio">PORTFÓLIO</a>
-                <a href="#projetos">PROJETOS</a>
+                <a href="#inicio">Início</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#projetos">Projetos</a>
             </nav>
+            <div id="inicio">
+                <h1>Luan Perretto</h1>
+                <div class="user-title">Editor de Geografia | Cartógrafo | Infografista</div>
+                <div class="social-links">
+                    <a href="https://linkedin.com" target="_blank" rel="noopener" title="LinkedIn"><img src="icons8-linkedin-48.png" alt="LinkedIn"></a>
+                    <a href="mailto:seu-email@gmail.com" target="_blank" rel="noopener" title="Gmail"><img src="icons8-gmail-48.png" alt="Gmail"></a>
+                    <a href="https://github.com/luanperretto" target="_blank" rel="noopener" title="GitHub"><img src="icons8-octocat-48.png" alt="GitHub"></a>
+                    <a href="https://whatsapp.com" target="_blank" rel="noopener" title="WhatsApp"><img src="icons8-whatsapp-48.png" alt="WhatsApp"></a>
+                </div>
+                <div class="header-meta">
+                    <p>Curitiba, Brasil</p>
+                </div>
+            </div>
         </header>
 
         <main>
             <section id="sobre" class="card">
-                <h2>SOBRE</h2>
-                <p>Atuação especializada em edição, autoria, revisão e leitura crítica de conteúdos de Geografia e Ciências Humanas alinhados às diretrizes da BNCC e PNLD para o Ensino Fundamental e Médio.</p>
-                <p>Desenvolvimento de cartografia escolar, mapas temáticos e infografias com rigor técnico e design minimalista em paletas neutras/pastel.</p>
+                <h2>Sobre</h2>
+                <p>Editor de conteúdo, cartógrafo e infografista atuando no mercado editorial desde 2020. Colaboro com editoras, edtechs e sistemas de ensino na confecção de materiais educacionais de Geografia do Ensino Fundamental e Médio. Meu trabalho envolve a edição e autoria de conteúdos geográficos em texto, assim como a ilustração de mapas e infográficos de todas as áreas do conhecimento.</p>
+                <p>Possuo ampla experiência com editoras e empresas do setor de educação, atendendo também órgãos públicos, terceiro setor, jornais, agências e mercado corporativo com foco em rigor técnico, precisão cartográfica e design limpo.</p>
             </section>
 
             <section id="portfolio" class="card">
-                <h2>PORTFÓLIO</h2>
+                <h2>Portfólio</h2>
                 <p>Repositório de recursos cartográficos, mapas temáticos e infografias elaborados para materiais educativos e projetos editoriais.</p>
                 
-                <!-- Imagens com números maiores primeiro (4, 5, 6, 7) com textos dinâmicos -->
+                <!-- Imagens maiores primeiro (4, 5, 6, 7) com textos dinâmicos em parágrafos -->
                 <div class="image-grid">
                     <div class="image-item" onclick="openModal('imagem4.gif', [
                         'Como o fenômeno do Super El Niño pode ser identificado e representado? Para responder isso de maneira sintética, criei um jogo de mapas com dados científicos representando sua evolução no decorrer de 2026.',
@@ -356,7 +375,7 @@
                     </div>
                 </div>
 
-                <!-- Bloco Triplo para as Imagens 1, 2 e 3 (Menores números no final, somente imagem no modal) -->
+                <!-- Bloco Triplo para as Imagens 1, 2 e 3 (Menores números embaixo, somente imagem no modal) -->
                 <div class="image-grid" style="grid-template-columns: repeat(3, 1fr); margin-top: 1.5rem;">
                     <div class="image-item" onclick="openModal('imagem1.png', [])">
                         <img src="imagem1.png" alt="Trabalho 1">
@@ -371,10 +390,9 @@
             </section>
 
             <section id="projetos" class="card">
-                <h2>PROJETOS</h2>
+                <h2>Projetos</h2>
                 <p>Iniciativas e repositórios de dados espaciais abertos (Austral Spatial Data) voltados à visualização e cartografia temática.</p>
                 
-                <!-- Imagens de Projetos com números maiores (8 e 9) com textos dinâmicos -->
                 <div class="image-grid">
                     <div class="image-item" onclick="openModal('imagem8.png', [
                         'A Bienal do Livro de São Paulo sempre homenageia muitas escritoras e escritores, na edição de 2026 foi a vez da Conceição Evaristo e do Mauricio de Sousa!',
@@ -389,12 +407,6 @@
                     ])">
                         <img src="imagem9.png" alt="Projeto 9">
                     </div>
-                </div>
-
-                <div class="social-links">
-                    <a href="https://linkedin.com" target="_blank" rel="noopener" title="LinkedIn"><img src="icons8-linkedin-48.png" alt="LinkedIn"></a>
-                    <a href="https://github.com/luanperretto" target="_blank" rel="noopener" title="GitHub"><img src="icons8-octocat-48.png" alt="GitHub"></a>
-                    <a href="https://whatsapp.com" target="_blank" rel="noopener" title="WhatsApp"><img src="icons8-whatsapp-48.png" alt="WhatsApp"></a>
                 </div>
             </section>
         </main>
