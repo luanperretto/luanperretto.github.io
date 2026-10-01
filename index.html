@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Luan Perretto</title>
+  <title>Luan Perretto — Editor de Geografia | Cartógrafo | Infografista</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,7 +40,6 @@
       overscroll-behavior-y: none;
     }
 
-    /* Wrapper que recebe o efeito de fade-in (não contém os modais) */
     #page-wrapper {
       opacity: 0;
       transform: translateY(20px);
@@ -115,57 +114,6 @@
     .expand-icon-container { position: relative; width: 12px; height: 12px; display: flex; align-items: center; justify-content: center; }
     .expand-arrow-top-right { position: absolute; top: 0; right: 0; width: 5px; height: 5px; border-top: 1px solid #333; border-right: 1px solid #333; }
     .expand-arrow-bottom-left { position: absolute; bottom: 0; left: 0; width: 5px; height: 5px; border-bottom: 1px solid #333; border-left: 1px solid #333; }
-
-    /* ============================================
-       GRID AGRUPADO (imagens 6, 7 e 8 na landing page)
-       Mesmo layout do Gemini: img 6 em cima, 7 e 8 embaixo
-       ============================================ */
-    .multi-grid-item { position: relative; }
-    .multi-grid-item .work-overlay-icon { top: 14px; right: 14px; }
-    
-    .multi-grid-inner {
-      display: grid; 
-      grid-template-columns: 1fr 1fr; 
-      grid-template-rows: 1.1fr 0.9fr; 
-      gap: 3px;
-      border-radius: 10px; 
-      overflow: hidden; 
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); 
-      background-color: #fff; 
-      aspect-ratio: 1 / 1; 
-      position: relative;
-    }
-    .multi-grid-inner .work-image-wrapper:nth-child(1) { 
-      grid-column: 1 / -1; 
-      grid-row: 1; 
-      border-radius: 0; 
-      box-shadow: none; 
-      overflow: hidden;
-    }
-    .multi-grid-inner .work-image-wrapper:nth-child(1) img { 
-      width: 100%; 
-      height: 100%; 
-      object-fit: cover; 
-      object-position: top center; 
-      display: block;
-    }
-    .multi-grid-inner .work-image-wrapper:nth-child(2),
-    .multi-grid-inner .work-image-wrapper:nth-child(3) { 
-      grid-row: 2; 
-      border-radius: 0; 
-      box-shadow: none; 
-      overflow: hidden;
-      position: relative; 
-      z-index: 2; 
-    }
-    .multi-grid-inner .work-image-wrapper:nth-child(2) img,
-    .multi-grid-inner .work-image-wrapper:nth-child(3) img { 
-      width: 100%; 
-      height: 100%; 
-      object-fit: cover; 
-      object-position: top center; 
-      display: block;
-    }
 
     /* ============================================
        MODAL DE PROJETO
@@ -367,7 +315,6 @@
 </head>
 <body>
 
-  <!-- Wrapper que recebe o efeito de fade-in (NÃO contém os modais) -->
   <div id="page-wrapper">
 
     <div id="topo"></div>
@@ -379,11 +326,14 @@
     </nav>
 
     <h1 style="margin-top: 0;">Luan Perretto</h1>
-    <div class="subtitle">Editor de Geografia, cartógrafo e infografista</div>
+    <div class="subtitle">Editor de Geografia | Cartógrafo | Infografista</div>
 
     <div class="social-links">
       <a href="https://www.linkedin.com/in/luanperretto/?skipRedirect=true" target="_blank" title="LinkedIn">
         <img src="icons8-linkedin-48.png" alt="LinkedIn">
+      </a>
+      <a href="https://substack.com/@luanperretto" target="_blank" title="Substack">
+        <img src="icons8-substack-48.png" alt="Substack">
       </a>
       <a href="https://wa.me/5541995015111?text=Oi%20Luan!%20Tudo%20bem%3F%20Gostaria%20de%20falar%20contigo." target="_blank" title="WhatsApp">
         <img src="icons8-whatsapp-48.png" alt="WhatsApp">
@@ -415,12 +365,11 @@
       <div class="gallery">
 
         <div class="work-item" onclick="openModal('imagem1.png', [
-          'A Bienal do Livro de São Paulo sempre homenageia muitas escritoras e escritores, na edição de 2026 foi a vez da Conceição Evaristo e do Mauricio de Sousa!',
-          'Nesse clima literário, resgatei um mapa antigo do IBGE de 2018 sobre as regiões literárias e atualizei da minha maneira, como forma de homenagem a esses e todos os profissionais do livro, artistas e educadores. As regiões literárias são os recortes espaciais, exatos ou possíveis, que inspiram e servem de cenário para os universos criados pelos autores em suas obras.',
-          'Fica a minha celebração à escrevivência de Conceição Evaristo e ao legado do Mauricio de Sousa na formação de gerações de leitores!'
+          'Em setembro de 1982 foi criado o primeiro emoticon, a carinha feliz :-), pelo professor estadunidense Scott Fahlman. A ideia dele foi utilizar o símbolo para indicar quando havia humor nas mensagens dos fóruns online na época. Já a sua evolução, o emoji gráfico em formato digital, foi desenvolvido em 1999 pelo designer Shigetaka Kurita do Japão.',
+          'Como sou um usuário contumaz de emojis, aproveitei essa deixa e fiz um mapa com alguns deles representando um pouco da Geografia brasileira! Gosto muito de experimentar esses formatos lúdicos de mapas, a cartografia é um laboratório imenso de didática e linguagem.'
         ])">
           <div class="work-image-wrapper">
-            <img src="imagem1.png" alt="Trabalho 1">
+            <img src="imagem1.png" alt="O Brasil em emojis">
             <div class="work-overlay-icon">
               <div class="expand-icon-container">
                 <div class="expand-arrow-top-right"></div>
@@ -431,11 +380,12 @@
         </div>
 
         <div class="work-item" onclick="openModal('imagem2.png', [
-          'A ONU mudou sua recomendação de projeção cartográfica do mundo, visando incentivar a representação mais justa e correta da proporção dos continentes, principalmente da África. Ela passou a adoção da projeção Equal Earth, criada em 2018, no lugar da tradicional projeção de Mercator, datada do século XVI.',
-          'Essa mudança é um marco histórico e resultado da articulação de lideranças africanas, que há anos cobravam um posicionamento da ONU em prol da representação visual equilibrada do mundo em escolas, mídias e documentos globais.'
+          'A Bienal do Livro de São Paulo sempre homenageia muitas escritoras e escritores, na edição de 2026 foi a vez da Conceição Evaristo e do Mauricio de Sousa!',
+          'Nesse clima literário, resgatei um mapa antigo do IBGE de 2018 sobre as regiões literárias e atualizei da minha maneira, como forma de homenagem a esses e todos os profissionais do livro, artistas e educadores. As regiões literárias são os recortes espaciais, exatos ou possíveis, que inspiram e servem de cenário para os universos criados pelos autores em suas obras.',
+          'Fica a minha celebração à escrevivência de Conceição Evaristo e ao legado do Mauricio de Sousa na formação de gerações de leitores!'
         ])">
           <div class="work-image-wrapper">
-            <img src="imagem2.png" alt="Trabalho 2">
+            <img src="imagem2.png" alt="As regiões literárias do Brasil">
             <div class="work-overlay-icon">
               <div class="expand-icon-container">
                 <div class="expand-arrow-top-right"></div>
@@ -446,16 +396,11 @@
         </div>
 
         <div class="work-item" onclick="openModal('imagem3.png', [
-          'Nessa semana, o IBGE divulgou os dados atualizados de áreas urbanizadas do Brasil computados em 2022. O mapa ilustrado por mim demonstra estas áreas do estudo, cruzadas com das metrópoles da pesquisa das Regiões de Influência das Cidades (REGIC 2018) também do IBGE.',
-          'As áreas urbanizadas são faixas do solo ocupadas por infraestrutura e feições antrópicas construídas, por exemplo vias, calçadas e edifícios. No caso das metrópoles, esses tipos de cidades apresentam, além de manchas urbanizadas, grande população, atratividade de pessoas, fornecimento de serviços, relevância econômica e política.',
-          'O Brasil contém 50 981,91 km² de áreas urbanizadas, aproximadamente 0,6% da sua área territorial, que incluem as 15 metrópoles brasileiras. A maior proporção territorial urbanizada em relação à sua área total é o Distrito Federal, por outro lado, o menor é o estado do Amazonas (IBGE, 2026).',
-          'Cabe ressaltar que as áreas urbanizadas diferenciam-se das áreas urbanas. Estas últimas consistem em porções antropizadas vinculadas aos municípios que consideram os terrenos vazios e as malhas urbanas futuras, sendo delimitadas por leis municipais, como o Plano Diretor e a Lei de Zoneamento.',
-          'Os dados revelam a concentração de feições urbanizadas e metrópoles na região Sudeste e no litoral brasileiro. Além disso, cerca de 50% das áreas urbanizadas do país estão nos estados de São Paulo, Minas Gerais, Bahia, Paraná e Rio Grande do Sul (IBGE, 2026).',
-          'A região Nordeste teve a maior expansão horizontal de área urbanizada absoluta de 2019 a 2022, alcançando 1 961,44 km² adicionadas, o que equivale a 1,5 vezes a Ilha de São Luís no Maranhão. Enquanto isso, das regiões Norte e Centro-Oeste contêm tímida participação nas manchas urbanizadas, com exceção das regiões metropolitanas de Brasília, Goiânia, Belém e Manaus.',
-          'Cruzando essas informações com os dados da REGIC, identifica-se correspondência das metrópoles com as grandes manchas urbanizadas e conurbadas do país. Isso reflete a concentração de infraestrutura que esses centros exibem, nexo direto com a amplitude da sua influência nacional e regional.'
+          'A ONU mudou sua recomendação de projeção cartográfica do mundo, visando incentivar a representação mais justa e correta da proporção dos continentes, principalmente da África. Ela passou a recomendar a adoção da projeção Equal Earth, criada em 2018, no lugar da tradicional projeção de Mercator, datada do século XVI.',
+          'Essa mudança é um marco histórico e resultado da articulação de lideranças africanas, que há anos cobravam um posicionamento da ONU em prol da representação visual equilibrada do mundo em escolas, mídias e documentos globais.'
         ])">
           <div class="work-image-wrapper">
-            <img src="imagem3.png" alt="Trabalho 3">
+            <img src="imagem3.png" alt="A mudança de projeção cartográfica na ONU">
             <div class="work-overlay-icon">
               <div class="expand-icon-container">
                 <div class="expand-arrow-top-right"></div>
@@ -466,15 +411,16 @@
         </div>
 
         <div class="work-item" onclick="openModal('imagem4.png', [
-          'Segundo levantamentos do MapBiomas Brasil e do IBGE, respectivamente de 2023 e 2024, o Brasil está aproximadamente 30% coberto por áreas agropecuárias (lavouras e pastagens), enquanto 60% do país corresponde a florestas, sem levar em conta a vegetação campestre.',
-          'O mapa ilustrado por mim indica a diferenciação dessas áreas pelo Brasil e Unidades da Federação, sendo possível identificar a proporção de cobertura florestal e agropecuária de cada recorte, o que também reflete as informações trazidas a seguir.',
-          'A agropecuária brasileira segue crescendo rapidamente na cobertura e uso do solo, com grandes áreas produtivas extensivas no Pará e Tocantins, e intensivas em Mato Grosso e São Paulo. Estas áreas agropecuárias se somam aos insumos, agroindústria e agrosserviços, constituindo o agronegócio brasileiro, que representou 25% do Produto Interno Bruto (PIB) em 2025, segundo pesquisa do CEPEA da Universidade de São Paulo.',
-          'O Brasil apresenta a segunda maior cobertura florestal do mundo, 496 milhões de hectares (IBGE, 2024). No entanto, o Brasil é o líder mundial em perda florestal, com média de 1,5 milhão de hectares de florestas suprimidos ao ano, medida calculada em relação aos últimos 7 anos (MapBiomas, 2025).',
-          'Nesse sentido, as florestas tiveram supressão de cerca de 10% nas últimas décadas, principalmente nos biomas Amazônia e Cerrado, aprofundando a fronteira agropecuária na Amazônia Legal por núcleos no MATOPIBA e na AMACRO. Mesmo assim, os estados do Amazonas, Amapá e Roraima ainda contam com 95% de seus territórios compostos por massas florestais (MapBiomas, 2023).',
-          'Outra informação interessante encontrada, foi do Monitor de Recuperação do MapBiomas, que agrega os dados de recuperação de mata nativa do Brasil. Ele mostra que o país recuperou cerca de 1 milhão de hectares totais de florestas entre 2000 e 2025. Um valor absoluto expressivo, porém, muito aquém do que já foi perdido no país até então.'
+          'Nessa semana, o IBGE divulgou os dados atualizados de áreas urbanizadas do Brasil computados em 2022. O mapa ilustrado por mim demonstra estas áreas do estudo, cruzadas com as metrópoles da pesquisa das Regiões de Influência das Cidades (REGIC 2018) também do IBGE.',
+          'As áreas urbanizadas são faixas do solo ocupadas por infraestrutura e feições antrópicas construídas, por exemplo vias, calçadas e edifícios. No caso das metrópoles, esses tipos de cidades apresentam, além de manchas urbanizadas, grande população, atratividade de pessoas, fornecimento de serviços, relevância econômica e política.',
+          'O Brasil contém 50 981,91 km² de áreas urbanizadas, aproximadamente 0,6% da sua área territorial, que incluem as 15 metrópoles brasileiras. A maior proporção territorial urbanizada em relação à sua área total é o Distrito Federal, por outro lado, o menor é o estado do Amazonas (IBGE, 2026).',
+          'Cabe ressaltar que as áreas urbanizadas diferenciam-se das áreas urbanas. Estas últimas consistem em porções antropizadas vinculadas aos municípios que consideram os terrenos vazios e as malhas urbanas futuras, sendo delimitadas por leis municipais, como o Plano Diretor e a Lei de Zoneamento.',
+          'Os dados revelam a concentração de feições urbanizadas e metrópoles na região Sudeste e no litoral brasileiro. Além disso, cerca de 50% das áreas urbanizadas do país estão nos estados de São Paulo, Minas Gerais, Bahia, Paraná e Rio Grande do Sul (IBGE, 2026).',
+          'A região Nordeste teve a maior expansão horizontal de área urbanizada absoluta de 2019 a 2022, alcançando 1 961,44 km² adicionadas, o que equivale a 1,5 vezes a Ilha de São Luís no Maranhão. Enquanto isso, as regiões Norte e Centro-Oeste contêm tímida participação nas manchas urbanizadas, com exceção das regiões metropolitanas de Brasília, Goiânia, Belém e Manaus.',
+          'Cruzando essas informações com os dados da REGIC, identifica-se correspondência das metrópoles com as grandes manchas urbanizadas e conurbadas do país. Isso reflete a concentração de infraestrutura que esses centros exibem, nexo direto com a amplitude da sua influência nacional e regional.'
         ])">
           <div class="work-image-wrapper">
-            <img src="imagem4.png" alt="Trabalho 4">
+            <img src="imagem4.png" alt="Brasil: áreas urbanizadas e metrópoles">
             <div class="work-overlay-icon">
               <div class="expand-icon-container">
                 <div class="expand-arrow-top-right"></div>
@@ -484,7 +430,26 @@
           </div>
         </div>
 
-        <div class="work-item" onclick="openModal('imagem5.gif', [
+        <div class="work-item" onclick="openModal('imagem5.png', [
+          'Segundo levantamentos do MapBiomas Brasil e do IBGE, respectivamente de 2023 e 2024, o Brasil está aproximadamente 30% coberto por áreas agropecuárias (lavouras e pastagens), enquanto 60% do país corresponde a florestas, sem levar em conta a vegetação campestre.',
+          'O mapa ilustrado por mim indica a diferenciação dessas áreas pelo Brasil e Unidades da Federação, sendo possível identificar a proporção de cobertura florestal e agropecuária de cada recorte, o que também reflete as informações trazidas a seguir.',
+          'A agropecuária brasileira segue crescendo rapidamente na cobertura e uso do solo, com grandes áreas produtivas extensivas no Pará e Tocantins, e intensivas em Mato Grosso e São Paulo. Estas áreas agropecuárias se somam aos insumos, agroindústria e agrosserviços, constituindo o agronegócio brasileiro, que representou 25% do Produto Interno Bruto (PIB) em 2025, segundo pesquisa do CEPEA da Universidade de São Paulo.',
+          'O Brasil apresenta a segunda maior cobertura florestal do mundo, 496 milhões de hectares (IBGE, 2024). No entanto, o Brasil é o líder mundial em perda florestal, com média de 1,5 milhão de hectares de florestas suprimidos ao ano, medida calculada em relação aos últimos 7 anos (MapBiomas, 2025).',
+          'Nesse sentido, as florestas tiveram supressão de cerca de 10% nas últimas décadas, principalmente nos biomas Amazônia e Cerrado, aprofundando a fronteira agropecuária na Amazônia Legal por núcleos no MATOPIBA e na AMACRO. Mesmo assim, os estados do Amazonas, Amapá e Roraima ainda contam com 95% de seus territórios compostos por massas florestais (MapBiomas, 2023).',
+          'Outra informação interessante encontrada por minhoca, foi do Monitor de Recuperação do MapBiomas, que agrega os dados de recuperação de mata nativa do Brasil. Ele mostra que o país recuperou cerca de 1 milhão de hectares totais de florestas entre 2000 e 2025. Um valor absoluto expressivo, porém, muito aquém do que já foi perdido no país até então.'
+        ])">
+          <div class="work-image-wrapper">
+            <img src="imagem5.png" alt="Brasil: áreas agropecuárias e florestas">
+            <div class="work-overlay-icon">
+              <div class="expand-icon-container">
+                <div class="expand-arrow-top-right"></div>
+                <div class="expand-arrow-bottom-left"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="work-item" onclick="openModal('imagem6.gif', [
           'Como o fenômeno do Super El Niño pode ser identificado e representado? Para responder isso de maneira sintética, criei um jogo de mapas com dados científicos representando sua evolução no decorrer de 2026.',
           'O El Niño, em linhas gerais, consiste no aquecimento natural e cíclico do Oceano Pacífico a cada três a cinco anos em média, acontecendo entre as latitudes 20°N e 20°S, com picos entre as latitudes 5°N e 5°S.',
           'O oceano mais quente acaba aumentando a temperatura da atmosfera, causando alterações climáticas e muitas vezes acompanhadas de desastres ambientais, como chuvas fortes e alagamentos no sul da América do Sul.',
@@ -495,33 +460,12 @@
           '* Os mapas foram confeccionados adotando como fonte as informações de reanálise ERA5 do Serviço Copernicus para as Alterações Climáticas (C3S) da Agência Espacial Europeia (ESA). Além disso, as anomalias de temperatura da superfície de 2026 foram calculadas em função das médias históricas da variável de 1991 a 2000.'
         ])">
           <div class="work-image-wrapper">
-            <img src="imagem5.gif" alt="Trabalho 5">
+            <img src="imagem6.gif" alt="Super El Niño">
             <div class="work-overlay-icon">
               <div class="expand-icon-container">
                 <div class="expand-arrow-top-right"></div>
                 <div class="expand-arrow-bottom-left"></div>
               </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Bloco agrupado: imagens 6, 7 e 8 (mesmo layout do Gemini) -->
-        <div class="work-item multi-grid-item" onclick="openMultiModal(['imagem6.png', 'imagem7.png', 'imagem8.png'])">
-          <div class="multi-grid-inner">
-            <div class="work-image-wrapper">
-              <img src="imagem6.png" alt="Trabalho 6">
-            </div>
-            <div class="work-image-wrapper">
-              <img src="imagem7.png" alt="Trabalho 7">
-            </div>
-            <div class="work-image-wrapper">
-              <img src="imagem8.png" alt="Trabalho 8">
-            </div>
-          </div>
-          <div class="work-overlay-icon">
-            <div class="expand-icon-container">
-              <div class="expand-arrow-top-right"></div>
-              <div class="expand-arrow-bottom-left"></div>
             </div>
           </div>
         </div>
@@ -534,9 +478,7 @@
     </footer>
 
   </div>
-  <!-- Fim do wrapper -->
 
-  <!-- Modal de Projeto (fora do wrapper) -->
   <div id="modalOverlay" class="modal-overlay" onclick="closeModalOnOverlay(event)">
     <div class="modal-card" onclick="toggleImmersive(event)">
       <button class="modal-close-btn" onclick="closeModal()">
@@ -554,7 +496,6 @@
     </div>
   </div>
 
-  <!-- Modal do Formulário de E-mail (fora do wrapper) -->
   <div id="formModalOverlay" class="form-modal-overlay" onclick="closeFormModalOnOverlay(event)">
     <div class="form-modal-card">
       <button class="form-close-btn" onclick="closeFormModal()">
@@ -588,7 +529,6 @@
   </div>
 
   <script>
-    /* Fade-in do wrapper (não afeta os modais) */
     window.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
         requestAnimationFrame(() => {
@@ -597,9 +537,6 @@
       }, 100);
     });
 
-    /* ============================================
-       MODAL DE PROJETO (imagem única + texto)
-       ============================================ */
     function openModal(imageSrc, paragraphs) {
       const imgContainer = document.getElementById('modalImageContainer');
       imgContainer.innerHTML = `<img src="${imageSrc}" alt="Ampliação do Projeto">`;
@@ -622,61 +559,30 @@
       setTimeout(() => { modalScroll.scrollTop = 0; }, 10);
     }
 
-    /* ============================================
-       MODAL DE PROJETO (múltiplas imagens, sem texto)
-       ============================================ */
-    function openMultiModal(imageSrcs) {
-      const imgContainer = document.getElementById('modalImageContainer');
-      imgContainer.innerHTML = '';
-      
-      imageSrcs.forEach((src, index) => {
-        const img = document.createElement('img');
-        img.src = src;
-        img.alt = `Ampliação do Projeto Parte ${index + 1}`;
-        imgContainer.appendChild(img);
-      });
-
-      document.getElementById('modalTextContainer').innerHTML = '';
-      document.getElementById('modalDescriptionWrapper').style.display = 'none';
-
-      document.querySelector('.modal-card').classList.remove('immersive');
-      document.getElementById('modalOverlay').classList.add('active');
-      document.body.style.overflow = 'hidden';
-
-      const modalScroll = document.querySelector('.modal-scroll-content');
-      modalScroll.scrollTop = 0;
-      setTimeout(() => { modalScroll.scrollTop = 0; }, 10);
-    }
-
     function closeModal() {
       document.getElementById('modalOverlay').classList.remove('active');
       document.body.style.overflow = 'auto';
-      
-      const modalScroll = document.querySelector('.modal-scroll-content');
-      modalScroll.scrollTop = 0;
-
-      document.querySelector('.modal-card').classList.remove('immersive');
     }
 
     function closeModalOnOverlay(event) {
-      if (event.target.id === 'modalOverlay') closeModal();
+      if (event.target.id === 'modalOverlay') {
+        closeModal();
+      }
     }
 
     function toggleImmersive(event) {
-      if (event.target.closest('.modal-description')) return;
-      if (event.target.closest('.modal-close-btn')) return;
-      event.stopPropagation();
-      const card = document.querySelector('.modal-card');
-      card.classList.toggle('immersive');
+      if (event.target.tagName === 'IMG') {
+        const card = document.querySelector('.modal-card');
+        card.classList.toggle('immersive');
+      }
     }
 
-    /* ============================================
-       MODAL DO FORMULÁRIO DE E-MAIL
-       ============================================ */
     function openFormModal(event) {
-      if (event) event.preventDefault();
+      event.preventDefault();
       document.getElementById('formModalOverlay').classList.add('active');
       document.body.style.overflow = 'hidden';
+      const formScroll = document.querySelector('.form-modal-scroll');
+      formScroll.scrollTop = 0;
     }
 
     function closeFormModal() {
@@ -685,80 +591,17 @@
     }
 
     function closeFormModalOnOverlay(event) {
-      if (event.target.id === 'formModalOverlay') closeFormModal();
+      if (event.target.id === 'formModalOverlay') {
+        closeFormModal();
+      }
     }
 
-    /* ESC fecha modais */
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         closeModal();
         closeFormModal();
       }
     });
-
-    /* PULL TO REFRESH NO CELULAR */
-    (function() {
-      let startY = 0;
-      let isPulling = false;
-      const nav = document.querySelector('nav');
-      const threshold = 100;
-
-      nav.addEventListener('touchstart', function(e) {
-        if (window.scrollY === 0) {
-          startY = e.touches[0].clientY;
-          isPulling = true;
-        }
-      }, { passive: true });
-
-      nav.addEventListener('touchmove', function(e) {
-        if (!isPulling) return;
-        const currentY = e.touches[0].clientY;
-        const distance = currentY - startY;
-
-        if (distance > 0) {
-          nav.style.transform = `translateY(${Math.min(distance * 0.4, 40)}px)`;
-          nav.style.transition = 'none';
-        }
-      }, { passive: true });
-
-      nav.addEventListener('touchend', function(e) {
-        if (!isPulling) return;
-        const endY = e.changedTouches[0].clientY;
-        const distance = endY - startY;
-
-        nav.style.transition = 'transform 0.3s ease';
-        nav.style.transform = 'translateY(0)';
-
-        if (distance > threshold) location.reload();
-
-        isPulling = false;
-        startY = 0;
-      });
-    })();
-
-    /* DESELECIONA BOTÕES AO ROLAR NO CELULAR */
-    (function() {
-      window.addEventListener('scroll', function() {
-        if (!('ontouchstart' in window)) return;
-
-        const activeEl = document.activeElement;
-        if (activeEl && activeEl.tagName === 'A' && 
-            (activeEl.closest('nav') || activeEl.classList.contains('back-to-top'))) {
-          activeEl.blur();
-        }
-      }, { passive: true });
-
-      document.addEventListener('touchstart', function(e) {
-        if (!('ontouchstart' in window)) return;
-
-        const activeEl = document.activeElement;
-        if (activeEl && activeEl.tagName === 'A' && 
-            (activeEl.closest('nav') || activeEl.classList.contains('back-to-top'))) {
-          if (!activeEl.contains(e.target)) activeEl.blur();
-        }
-      }, { passive: true });
-    })();
   </script>
-
 </body>
 </html>
